@@ -1,0 +1,16 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment
+env/
+venv/
+
+# Ignore database files
+*.sqlite3
+
+# Ignore Django secret key (if using .env)
+.env
