@@ -1,7 +1,7 @@
 import './style.css'
 
 const GameView = () => {
-  return <div>Game View</div>
+  return <div className='code-box'>Game View</div>
 }
 
 export default GameView
