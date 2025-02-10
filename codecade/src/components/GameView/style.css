@@ -3,3 +3,17 @@
   width: 40vw;
   margin: 5px;
 }
+
+.board {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.square {
+  width: 30%;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  text-align: center;
+}
