@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 // import { useState } from 'react'
 import './style.css'
 
-const CodeView = () => {
+const CodeView = ({ currentLine }) => {
   // const tic_tac_toe_code = [
   //   'def handle_move(position):',
   //   '    # Initialize the game board',
@@ -23,10 +24,8 @@ const CodeView = () => {
     'def play_round(player_choice):',
     '    # Define the possible choices',
     '    choices = ["rock", "paper", "scissors"]',
-    '',
     '    # Generate a random choice for the computer',
     '    computer_choice = random.choice(choices)',
-    '',
     '    # Determine the outcome of the game',
     '    if player_choice == computer_choice:',
     "        # If choices are the same, it's a tie",
@@ -41,8 +40,12 @@ const CodeView = () => {
     '        return "You lose!"',
   ]
 
-  let codeLines = rock_paper_scissor_code.map((line) => {
-    return <h3 key={line.indexOf}>{line}</h3>
+  let codeLines = rock_paper_scissor_code.map((line, index) => {
+    return (
+      <h3 key={index} className={currentLine === index ? 'highlight' : ''}>
+        {line}
+      </h3>
+    )
   })
 
   return (
