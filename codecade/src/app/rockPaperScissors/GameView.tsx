@@ -22,10 +22,10 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     const comp_choice = options[Math.floor(Math.random() * options.length)]
 
     setPlayerChoice(players_choice)
-    console.log(playerChoice)
+    console.log(players_choice)
 
     setCompChoice(comp_choice)
-    console.log(compChoice)
+    console.log(comp_choice)
 
     if (playerChoice === compChoice) {
       console.log("It's a tie!")
@@ -45,8 +45,9 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     return (
       <button
         key={index}
-        className={`border-2 border-solid border-black p-2`}
+        className='border-2 border-solid border-black p-2'
         onClick={gameLogic}
+        disabled={buttonDisabled}
       >
         {option}
       </button>
