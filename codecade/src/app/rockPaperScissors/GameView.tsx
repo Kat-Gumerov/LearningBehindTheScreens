@@ -40,7 +40,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     }
   }
 
-  // Display each options
+  // Display each option
   let userChoices = options.map((option, index) => {
     return (
       <button

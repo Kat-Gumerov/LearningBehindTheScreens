@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { useState } from 'react'
+import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 
@@ -35,6 +36,9 @@ const page = () => {
     setButtonDisabled(false)
   }
 
+  {
+    /* change code replay speed */
+  }
   const speedUp = () => {
     setCodeSpeed((prevSpeed) => Math.max(200, prevSpeed - 200))
   }
@@ -45,6 +49,10 @@ const page = () => {
 
   return (
     <div>
+      <Link href={'../'}>
+        <button className='border-2 border-solid border-black p-2'>Home</button>
+      </Link>
+
       <h1>Code Speed : {codeSpeed / 1000}s</h1>
       <button
         onClick={speedUp}
@@ -58,6 +66,7 @@ const page = () => {
       >
         Slow Down
       </button>
+
       <div className='flex justify-around'>
         <GameView
           onUserClick={() => handleUserClick()}
