@@ -35,7 +35,9 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   })
 
   return (
-    <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+    <div>
+      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+    </div>
   )
 }
 

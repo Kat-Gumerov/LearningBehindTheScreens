@@ -12,6 +12,8 @@ interface GameViewProps {
 const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [playerChoice, setPlayerChoice] = useState('')
   const [compChoice, setCompChoice] = useState('')
+  const [playerWins, setPlayerWins] = useState(false)
+  const [compWins, setCompWins] = useState(false)
 
   const options = ['ROCK', 'PAPER', 'SCISSOR']
 
@@ -27,16 +29,22 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     setCompChoice(comp_choice)
     console.log(comp_choice)
 
-    if (playerChoice === compChoice) {
+    if (players_choice === comp_choice) {
       console.log("It's a tie!")
+      setPlayerWins(false)
+      setCompWins(false)
     } else if (
-      (playerChoice === 'ROCK' && compChoice === 'SCISSOR') ||
-      (playerChoice === 'SCISSORS' && compChoice === 'ROCK') ||
-      (playerChoice === 'PAPER' && compChoice === 'ROCK')
+      (players_choice === 'ROCK' && comp_choice === 'SCISSOR') ||
+      (players_choice === 'SCISSOR' && comp_choice === 'PAPER') ||
+      (players_choice === 'PAPER' && comp_choice === 'ROCK')
     ) {
       console.log('You win!')
+      setPlayerWins(true)
+      setCompWins(false)
     } else {
       console.log('You lose!')
+      setPlayerWins(false)
+      setCompWins(true)
     }
   }
 
@@ -55,7 +63,21 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   })
 
   return (
-    <div className='border-4 border-solid border-black p-4 w-96'>
+    <div className='border-4 border-solid border-black p-4 w-[500px]'>
+      <div className='game_states flex justify-around'>
+        <h1 className={playerWins ? 'text-green-700' : ''}>
+          Your Choice: {playerChoice}
+        </h1>
+        <h1 className={compWins ? 'text-green-700' : ''}>
+          Computer's Choice: {compChoice}
+        </h1>
+      </div>
+      <h1>
+        {' '}
+        {playerChoice && playerChoice === compChoice ? "It's a tie!" : ''}
+        {playerWins && !compWins ? 'You win!' : ''}
+        {!playerWins && compWins ? 'You lose!' : ''}
+      </h1>
       <h2>Choose One:</h2>
       <div className='flex justify-around'>{userChoices}</div>
     </div>
