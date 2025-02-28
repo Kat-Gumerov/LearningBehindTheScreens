@@ -10,7 +10,10 @@ const page = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
 
-  const handleUserClick = async (codeArray: number[]) => {
+  /*
+   * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
+   */
+  const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
 
     for (let i = 0; i < codeArray.length; i++) {
@@ -41,9 +44,7 @@ const page = () => {
     setButtonDisabled(false)
   }
 
-  {
-    /* change code replay speed */
-  }
+  /* The following two functions change code replay speed */
   const speedUp = () => {
     setCodeSpeed((prevSpeed) => Math.max(200, prevSpeed - 200))
   }
@@ -57,21 +58,22 @@ const page = () => {
       <Link href={'../'}>
         <button className='border-2 border-solid border-black p-2'>Home</button>
       </Link>
-
+      {/* code speed buttons */}
       <h1>Code Speed : {codeSpeed / 1000}s</h1>
-      <button
-        onClick={speedUp}
-        className='border-2 border-solid border-black p-2'
-      >
-        Speed Up
-      </button>
       <button
         onClick={slowDown}
         className='border-2 border-solid border-black p-2'
       >
         Slow Down
       </button>
+      <button
+        onClick={speedUp}
+        className='border-2 border-solid border-black p-2'
+      >
+        Speed Up
+      </button>
 
+      {/* displaying Game View and Code View */}
       <div className='flex justify-around'>
         <GameView
           onUserClick={handleUserClick}
