@@ -10,26 +10,31 @@ const page = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
 
-  const handleUserClick = async () => {
+  const handleUserClick = async (codeArray: number[]) => {
     setButtonDisabled(true)
 
-    setCurrentLine(2)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    for (let i = 0; i < codeArray.length; i++) {
+      setCurrentLine(codeArray[i])
+      await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    }
 
-    setCurrentLine(4)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    // setCurrentLine(2)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
-    setCurrentLine(9)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    // setCurrentLine(4)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
-    setCurrentLine(11)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    // setCurrentLine(9)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
-    setCurrentLine(13)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    // setCurrentLine(11)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
-    setCurrentLine(13)
-    await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+    // setCurrentLine(13)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
+
+    // setCurrentLine(13)
+    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
     setCurrentLine(0)
 
@@ -69,7 +74,7 @@ const page = () => {
 
       <div className='flex justify-around'>
         <GameView
-          onUserClick={() => handleUserClick()}
+          onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
         ></GameView>
         <CodeView currentLine={currentLine}></CodeView>

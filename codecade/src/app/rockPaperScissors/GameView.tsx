@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 interface GameViewProps {
   /** Function to handle the user's click */
-  onUserClick: (event: MouseEvent<HTMLButtonElement>) => void
+  onUserClick: (codeArray: number[]) => void
   /** Whether the button can be interacted with */
   buttonDisabled: boolean
 }
@@ -17,32 +17,38 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   const options = ['ROCK', 'PAPER', 'SCISSOR']
 
-  const gameLogic = (e: MouseEvent<HTMLButtonElement>) => {
-    onUserClick(e)
+  const playerWinsRock = [0, 2, 4, 6, 9, 10]
+  const playerWinsPaper = [0, 2, 4, 6, 9, 11, 13, 14]
+  const playerWinsScissor = [0, 2, 4, 6, 9, 11, 12]
+  const playerLoses = [0, 2, 4, 6, 9, 13, 16]
+  const playerTies = [0, 2, 4, 6, 7]
 
+  const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {
     const players_choice = (e.target as HTMLButtonElement).innerText
     const comp_choice = options[Math.floor(Math.random() * options.length)]
 
     setPlayerChoice(players_choice)
-    console.log(players_choice)
 
     setCompChoice(comp_choice)
-    console.log(comp_choice)
 
     if (players_choice === comp_choice) {
-      console.log("It's a tie!")
+      onUserClick(playerTies)
       setPlayerWins(false)
       setCompWins(false)
-    } else if (
-      (players_choice === 'ROCK' && comp_choice === 'SCISSOR') ||
-      (players_choice === 'SCISSOR' && comp_choice === 'PAPER') ||
-      (players_choice === 'PAPER' && comp_choice === 'ROCK')
-    ) {
-      console.log('You win!')
+    } else if (players_choice === 'ROCK' && comp_choice === 'SCISSOR') {
+      onUserClick(playerWinsRock)
+      setPlayerWins(true)
+      setCompWins(false)
+    } else if (players_choice === 'SCISSOR' && comp_choice === 'PAPER') {
+      onUserClick(playerWinsScissor)
+      setPlayerWins(true)
+      setCompWins(false)
+    } else if (players_choice === 'PAPER' && comp_choice === 'ROCK') {
+      onUserClick(playerWinsPaper)
       setPlayerWins(true)
       setCompWins(false)
     } else {
-      console.log('You lose!')
+      onUserClick(playerLoses)
       setPlayerWins(false)
       setCompWins(true)
     }
