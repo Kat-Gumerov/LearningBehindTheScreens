@@ -1,0 +1,22 @@
+body{
+    background-color: aquamarine;
+}
+
+#nav{
+    font-size: 20px;
+    margin: auto;
+    padding: 20px;
+    padding-left: 35%;
+    padding-right: 35%;
+    
+    background-color: aqua;
+}
+
+.navigation{
+    font-size: 30px;
+    border-radius: 15%;
+}
+.navigation:hover{
+    background-color: #292929;
+    color: #ffffff;
+}
