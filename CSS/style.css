@@ -1,0 +1,28 @@
+body{
+    background-color: #118AB2;
+} 
+
+.mcFont {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 25px;
+    font-style: normal;
+    margin: auto;
+}
+
+#webName{
+    margin-left:20%; 
+}
+
+#text{
+    padding-top: 37px;
+    margin-left: 20%;
+    float: left;
+}
+
+#image{
+    float: left;
+    margin-left: 50px;
+    margin-right: auto;
+}
+
