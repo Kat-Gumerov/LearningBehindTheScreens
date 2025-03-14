@@ -1,0 +1,14 @@
+body{
+    background-color: #57BEE7;
+}
+
+.title{
+    font-size: large;
+    color: blue;
+}
+
+.start-button{
+    color: white;
+    text-align: center;
+    border-radius: 20%;
+}
