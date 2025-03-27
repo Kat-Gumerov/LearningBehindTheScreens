@@ -12,7 +12,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   const hangmanParts = [
     {
-      part: 'gallows',
       lines: [
         '  +---+',
         '  |   |',
@@ -23,7 +22,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'head',
       lines: [
         '  +---+',
         '  |   |',
@@ -34,7 +32,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'body',
       lines: [
         '  +---+',
         '  |   |',
@@ -45,7 +42,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'leftArm',
       lines: [
         '  +---+',
         '  |   |',
@@ -56,7 +52,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'rightArm',
       lines: [
         '  +---+',
         '  |   |',
@@ -67,7 +62,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'leftLeg',
       lines: [
         '  +---+',
         '  |   |',
@@ -78,7 +72,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       ],
     },
     {
-      part: 'rightLeg',
       lines: [
         '  +---+',
         '  |   |',
@@ -90,10 +83,21 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     },
   ]
 
-  // Example of how to use it:
-  // console.log(hangmanParts[2].lines.join('\n')); // prints the body part
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-  const options = ['ROCK', 'PAPER', 'SCISSOR']
+  const letterButtons = alphabet.map((letter) => (
+    <button
+      key={letter}
+      // onClick={() => {
+      //   onGuess(letter)
+      // }}
+      // disabled={guessedLetters.includes(letter) || gameOver || buttonDisabled}
+      className={`border-2 border-solid border-black p-2 m-1 
+        // guessedLetters.includes(letter) ? 'bg-gray-200' : ''}`}
+    >
+      {letter}
+    </button>
+  ))
 
   // arrays of code lines and their orders based on each outcome of the game
   const playerWinsRock = [0, 2, 4, 6, 9, 10]
@@ -110,18 +114,18 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {}
 
   // Display each option for player
-  let userChoices = options.map((option, index) => {
-    return (
-      <button
-        key={index}
-        className='border-2 border-solid border-black p-2'
-        onClick={gameLogic}
-        disabled={buttonDisabled}
-      >
-        {option}
-      </button>
-    )
-  })
+  // let userChoices = options.map((option, index) => {
+  //   return (
+  //     <button
+  //       key={index}
+  //       className='border-2 border-solid border-black p-2'
+  //       onClick={gameLogic}
+  //       disabled={buttonDisabled}
+  //     >
+  //       {option}
+  //     </button>
+  //   )
+  // })
 
   let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
     <pre>
@@ -131,8 +135,9 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   ))
 
   return (
-    <div className='border-4 border-solid border-black p-4 w-[500px] flex justify-center'>
-      <div className=''>{renderHangman}</div>
+    <div className='border-4 border-solid border-black p-4 w-[500px] flex flex-col items-center '>
+      <div className='justify-self-center'>{renderHangman}</div>
+      <div>{letterButtons}</div>
     </div>
   )
 }
