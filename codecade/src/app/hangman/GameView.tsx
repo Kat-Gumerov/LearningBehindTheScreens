@@ -8,10 +8,90 @@ interface GameViewProps {
 }
 
 const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
-  const [playerChoice, setPlayerChoice] = useState('')
-  const [compChoice, setCompChoice] = useState('')
-  const [playerWins, setPlayerWins] = useState(false)
-  const [compWins, setCompWins] = useState(false)
+  const [numGuesses, setNumGuesses] = useState(0)
+
+  const hangmanParts = [
+    {
+      part: 'gallows',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '      |',
+        '      |',
+        '      |',
+        '=========',
+      ],
+    },
+    {
+      part: 'head',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        '      |',
+        '      |',
+        '=========',
+      ],
+    },
+    {
+      part: 'body',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        '  |   |',
+        '      |',
+        '=========',
+      ],
+    },
+    {
+      part: 'leftArm',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        ' /|   |',
+        '      |',
+        '=========',
+      ],
+    },
+    {
+      part: 'rightArm',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        ' /|\\  |',
+        '      |',
+        '=========',
+      ],
+    },
+    {
+      part: 'leftLeg',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        ' /|\\  |',
+        ' /    |',
+        '=========',
+      ],
+    },
+    {
+      part: 'rightLeg',
+      lines: [
+        '  +---+',
+        '  |   |',
+        '  O   |',
+        ' /|\\  |',
+        ' / \\  |',
+        '=========',
+      ],
+    },
+  ]
+
+  // Example of how to use it:
+  // console.log(hangmanParts[2].lines.join('\n')); // prints the body part
 
   const options = ['ROCK', 'PAPER', 'SCISSOR']
 
@@ -27,36 +107,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
    *then calls the onUser click function with the specific scenario array to be displayed
    */
 
-  const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {
-    const players_choice = (e.target as HTMLButtonElement).innerText
-    const comp_choice = options[Math.floor(Math.random() * options.length)]
-
-    setPlayerChoice(players_choice)
-
-    setCompChoice(comp_choice)
-
-    if (players_choice === comp_choice) {
-      onUserClick(playerTies)
-      setPlayerWins(false)
-      setCompWins(false)
-    } else if (players_choice === 'ROCK' && comp_choice === 'SCISSOR') {
-      onUserClick(playerWinsRock)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else if (players_choice === 'SCISSOR' && comp_choice === 'PAPER') {
-      onUserClick(playerWinsScissor)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else if (players_choice === 'PAPER' && comp_choice === 'ROCK') {
-      onUserClick(playerWinsPaper)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else {
-      onUserClick(playerLoses)
-      setPlayerWins(false)
-      setCompWins(true)
-    }
-  }
+  const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {}
 
   // Display each option for player
   let userChoices = options.map((option, index) => {
@@ -72,26 +123,16 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     )
   })
 
+  let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
+    <pre>
+      <h1 key={index}>{line}</h1>
+      <br />
+    </pre>
+  ))
+
   return (
-    <div className='border-4 border-solid border-black p-4 w-[500px]'>
-      <div className='game_states flex justify-around'>
-        {/* color winner text in green */}
-        <h1 className={playerWins ? 'text-green-700' : ''}>
-          Your Choice: {playerChoice}
-        </h1>
-        <h1 className={compWins ? 'text-green-700' : ''}>
-          Computer's Choice: {compChoice}
-        </h1>
-      </div>
-      <h1>
-        {/* 'Display game results' */}
-        {playerChoice && playerChoice === compChoice ? "It's a tie!" : ''}
-        {playerWins && !compWins ? 'You win!' : ''}
-        {!playerWins && compWins ? 'You lose!' : ''}
-      </h1>
-      {/* Display player options */}
-      <h2>Choose One:</h2>
-      <div className='flex justify-around'>{userChoices}</div>
+    <div className='border-4 border-solid border-black p-4 w-[500px] flex justify-center'>
+      <div className=''>{renderHangman}</div>
     </div>
   )
 }
