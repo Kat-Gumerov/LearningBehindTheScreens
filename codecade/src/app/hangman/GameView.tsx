@@ -14,6 +14,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [incorrectGuesses, setIncorrectGuesses] = useState<string[]>([])
   const [correctGuesses, setCorrectGuesses] = useState<string[]>([])
   const [secretWord, setSecretWord] = useState('')
+  const [gameOver, setGameOver] = useState(false)
 
   const hangmanParts = [
     {
@@ -107,6 +108,13 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     } else {
       let newIncorrectGuess = [...incorrectGuesses, players_guess]
       setIncorrectGuesses(newIncorrectGuess)
+      let addedGuess = numGuesses + 1
+      // console.log(addedGuess, numGuesses)
+      if (addedGuess <= 6) {
+        setNumGuesses(addedGuess)
+      } else {
+        setGameOver(true)
+      }
     }
 
     let newGuess = [...guessedLetters, players_guess]
@@ -118,7 +126,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     <button
       key={index}
       onClick={onGuess}
-      // disabled={guessedLetters.includes(letter) || gameOver || buttonDisabled}
+      disabled={guessedLetters.includes(letter) || gameOver || buttonDisabled}
       className={`border-2 border-solid border-black p-2 m-1 
         ${guessedLetters.includes(letter) ? 'bg-gray-200' : ''} ${
         incorrectGuesses.includes(letter) ? 'text-red-600' : 'text-black'
@@ -165,6 +173,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   return (
     <div className='border-4 border-solid border-black p-4 w-[500px] flex flex-col items-center '>
+      <h1>{gameOver ? 'Game Over' : ''}</h1>
       <div className='justify-self-center'>{renderHangman}</div>
       <div>{letterButtons}</div>
     </div>
