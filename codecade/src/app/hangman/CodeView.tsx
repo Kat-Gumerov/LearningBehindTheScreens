@@ -8,7 +8,7 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   const hangman_code = [
     "# Let's play Hangman!",
     '# First, we need a list of words to guess from.',
-    'words = ["apple", "banana", "cherry", "grape", "orange"]',
+    'words = ["code", "data", "chip", "byte", "file"]',
     '',
     '# We need to pick a random word from the list.',
     'import random',

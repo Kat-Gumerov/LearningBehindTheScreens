@@ -1,6 +1,7 @@
 'use client'
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, use, useEffect } from 'react'
 import { useState } from 'react'
+import { text } from 'stream/consumers'
 
 interface GameViewProps {
   onUserClick: (codeArray: number[]) => void
@@ -9,6 +10,10 @@ interface GameViewProps {
 
 const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [numGuesses, setNumGuesses] = useState(0)
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+  const [incorrectGuesses, setIncorrectGuesses] = useState<string[]>([])
+  const [correctGuesses, setCorrectGuesses] = useState<string[]>([])
+  const [secretWord, setSecretWord] = useState('')
 
   const hangmanParts = [
     {
@@ -85,15 +90,39 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-  const letterButtons = alphabet.map((letter) => (
+  const words = ['code', 'data', 'chip', 'byte', 'file']
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * words.length)
+    setSecretWord(words[randomIndex])
+  }, [])
+
+  const onGuess = (e: MouseEvent<HTMLButtonElement>) => {
+    const players_guess = (e.target as HTMLButtonElement).innerText
+
+    if (secretWord.includes(players_guess)) {
+      let newCorrectGuess = [...correctGuesses, players_guess]
+      setCorrectGuesses(newCorrectGuess)
+      // console.log(secretWord, players_guess)
+    } else {
+      let newIncorrectGuess = [...incorrectGuesses, players_guess]
+      setIncorrectGuesses(newIncorrectGuess)
+    }
+
+    let newGuess = [...guessedLetters, players_guess]
+
+    setGuessedLetters(newGuess)
+  }
+
+  const letterButtons = alphabet.map((letter, index) => (
     <button
-      key={letter}
-      // onClick={() => {
-      //   onGuess(letter)
-      // }}
+      key={index}
+      onClick={onGuess}
       // disabled={guessedLetters.includes(letter) || gameOver || buttonDisabled}
       className={`border-2 border-solid border-black p-2 m-1 
-        // guessedLetters.includes(letter) ? 'bg-gray-200' : ''}`}
+        ${guessedLetters.includes(letter) ? 'bg-gray-200' : ''} ${
+        incorrectGuesses.includes(letter) ? 'text-red-600' : 'text-black'
+      }`}
     >
       {letter}
     </button>
@@ -128,7 +157,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   // })
 
   let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
-    <pre>
+    <pre key={index}>
       <h1 key={index}>{line}</h1>
       <br />
     </pre>
