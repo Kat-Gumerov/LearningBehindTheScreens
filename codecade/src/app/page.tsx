@@ -11,7 +11,9 @@ export default function Home() {
         <Link href='/rockPaperScissors'>
           <li>Rock Paper Scissors</li>
         </Link>
-        <li>Hangman</li>
+        <Link href='/hangman'>
+          <li>Hangman</li>
+        </Link>
         <li>Word Scramble</li>
       </ul>
     </div>
