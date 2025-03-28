@@ -15,6 +15,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [correctGuesses, setCorrectGuesses] = useState<string[]>([])
   const [secretWord, setSecretWord] = useState('')
   const [gameOver, setGameOver] = useState(false)
+  const [playerWon, setPlayerWon] = useState(false)
 
   const hangmanParts = [
     {
@@ -91,7 +92,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-  const words = ['code', 'data', 'chip', 'byte', 'file']
+  const words = ['code', 'web', 'chip', 'byte', 'file']
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * words.length)
@@ -104,7 +105,9 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     if (secretWord.includes(players_guess)) {
       let newCorrectGuess = [...correctGuesses, players_guess]
       setCorrectGuesses(newCorrectGuess)
-      // console.log(secretWord, players_guess)
+      if (newCorrectGuess.length == secretWord.length) {
+        setPlayerWon(true)
+      }
     } else {
       let newIncorrectGuess = [...incorrectGuesses, players_guess]
       setIncorrectGuesses(newIncorrectGuess)
@@ -171,10 +174,17 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     </pre>
   ))
 
+  const generateDisplayWord = secretWord
+    .split('')
+    .map((letter) => (guessedLetters.includes(letter) ? letter : '_'))
+    .join(' ')
+
   return (
     <div className='border-4 border-solid border-black p-4 w-[500px] flex flex-col items-center '>
       <h1>{gameOver ? 'Game Over' : ''}</h1>
+      <h1>{playerWon ? 'You Win!' : ''}</h1>
       <div className='justify-self-center'>{renderHangman}</div>
+      <div>{generateDisplayWord}</div>
       <div>{letterButtons}</div>
     </div>
   )
