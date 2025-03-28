@@ -1,7 +1,5 @@
 'use client'
-import React, { MouseEvent, use, useEffect } from 'react'
-import { useState } from 'react'
-import { text } from 'stream/consumers'
+import React, { MouseEvent, useEffect, useState } from 'react'
 
 interface GameViewProps {
   onUserClick: (codeArray: number[]) => void
@@ -107,16 +105,19 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
       setCorrectGuesses(newCorrectGuess)
       if (newCorrectGuess.length == secretWord.length) {
         setPlayerWon(true)
+        onUserClick(playerWins)
       }
+      onUserClick(playerGuessCorrect)
     } else {
       let newIncorrectGuess = [...incorrectGuesses, players_guess]
       setIncorrectGuesses(newIncorrectGuess)
       let addedGuess = numGuesses + 1
-      // console.log(addedGuess, numGuesses)
       if (addedGuess <= 6) {
         setNumGuesses(addedGuess)
+        onUserClick(playerGuessIncorrect)
       } else {
         setGameOver(true)
+        onUserClick(playerLoses)
       }
     }
 
@@ -140,32 +141,19 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   ))
 
   // arrays of code lines and their orders based on each outcome of the game
-  const playerWinsRock = [0, 2, 4, 6, 9, 10]
-  const playerWinsPaper = [0, 2, 4, 6, 9, 11, 13, 14]
-  const playerWinsScissor = [0, 2, 4, 6, 9, 11, 12]
-  const playerLoses = [0, 2, 4, 6, 9, 11, 13, 16]
-  const playerTies = [0, 2, 4, 6, 7]
-
-  /*
-   * Accepts the button click event and sets the players choice, computer choice, the winner and
-   *then calls the onUser click function with the specific scenario array to be displayed
-   */
-
-  const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {}
-
-  // Display each option for player
-  // let userChoices = options.map((option, index) => {
-  //   return (
-  //     <button
-  //       key={index}
-  //       className='border-2 border-solid border-black p-2'
-  //       onClick={gameLogic}
-  //       disabled={buttonDisabled}
-  //     >
-  //       {option}
-  //     </button>
-  //   )
-  // })
+  const playerGuessCorrect = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+  ]
+  const playerGuessIncorrect = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17,
+  ]
+  const playerWins = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ]
+  const playerLoses = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23,
+  ]
 
   let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
     <pre key={index}>
