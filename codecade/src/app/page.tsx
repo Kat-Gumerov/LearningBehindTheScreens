@@ -14,6 +14,8 @@ export default function Home() {
         <li>Hangman</li>
         <li>Word Scramble</li>
       </ul>
+      <Link href='/Contact'><h1>Contact</h1></Link>
+      <Link href='/AboutUs'><h1>About Us</h1></Link>
     </div>
   )
 }
