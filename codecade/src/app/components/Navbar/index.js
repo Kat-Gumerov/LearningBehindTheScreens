@@ -2,28 +2,27 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavbarElements';
 
+
 const Navbar = () => {
   return (
     <>
       <Nav>
         <NavLink to='/'>
-        <h1>logo</h1>
+        <h1 id='logo-text'>CodeCade</h1>
         </NavLink>
         <Bars />
         <NavMenu>
-            <NavLink to="/home" activestyle>
+            <NavLink to="/home" activeStyle>
                 home
             </NavLink>
-            <NavLink to="/about" activestyle>
+            <NavLink to="/about" activesStyle>
                 about
             </NavLink>
-            <NavLink to="/contact" activestyle>
+            <NavLink to="/contact" activeStyle>
                 contact
             </NavLink>
-        </NavMenu>
-        <NavBtn>
             <NavBtnLink to='/play'>PLAY</NavBtnLink>
-        </NavBtn>
+        </NavMenu>
       </Nav>
     </>
   ) 
