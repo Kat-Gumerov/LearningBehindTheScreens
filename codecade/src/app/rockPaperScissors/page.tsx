@@ -6,7 +6,6 @@ import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 
-
 const page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
@@ -58,44 +57,50 @@ const page = () => {
   return (
     <div>
       <div>
-      {/* back button */}
-      <Link href={'..'}>
-        <button className='back-button'>
-        <img src="/images/arrow.png" alt="Back" width="100" height="100"/>
-        </button>
-      </Link>
+        {/* back button */}
+        <Link href={'..'}>
+          <button className='back-button'>
+            <img src='/images/arrow.png' alt='Back' width='100' height='100' />
+          </button>
+        </Link>
       </div>
       {/* title */}
       <div>
         <h1 className='title'>Rock Paper Scissors</h1>
+        <div className='speed-buttons flex '>
+          <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+          <div className='flex flex-col'>
+            {' '}
+            <button onClick={speedUp}>
+              <img
+                src='/images/uparrow.png'
+                alt='Back'
+                width='20'
+                height='17'
+              />
+            </button>
+            <br></br>
+            <button onClick={slowDown}>
+              <img
+                src='/images/downarrow.png'
+                alt='Back'
+                width='20'
+                height='17'
+              />
+            </button>
+          </div>
+        </div>
       </div>
-      
-      
 
-    {/* displaying Game View and Code View */}
-    <div className='dualscreen-container'>
-      {/* code speed buttons */}
-      <div className='speed-buttons'>
-        <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
-        <button
-          onClick={slowDown}
-        >
-          <img src="/images/uparrow.png" alt="Back" width="20" height="17"/>
-        </button>
-        <br></br>
-        <button
-          onClick={speedUp}
-        >
-          <img src="/images/downarrow.png" alt="Back" width="20" height="17"/>
-        </button>
-      </div>
-       
-      
-      <GameView
-      onUserClick={handleUserClick}
-      buttonDisabled={buttonDisabled}
-      ></GameView>
-      <CodeView currentLine={currentLine}></CodeView>
+      {/* displaying Game View and Code View */}
+      <div className='dualscreen-container'>
+        {/* code speed buttons */}
+
+        <GameView
+          onUserClick={handleUserClick}
+          buttonDisabled={buttonDisabled}
+        ></GameView>
+        <CodeView currentLine={currentLine}></CodeView>
       </div>
     </div>
   )
