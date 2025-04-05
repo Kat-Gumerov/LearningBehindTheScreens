@@ -68,13 +68,17 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
 
   return (
     <div>
+      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+      <div>
+        <h2>Explanation:</h2>
+        <p>{explanation}</p>
+      </div>
       {explanation && (
         <div>
           <h2>Explanation:</h2>
           <p>{explanation}</p>
         </div>
       )}
-      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
     </div>
   )
 }
