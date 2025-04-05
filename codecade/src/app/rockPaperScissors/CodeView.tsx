@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { getExplanation } from '../../../utils/api'
 
 interface CodeViewProps {
   currentLine: number
 }
 
 const CodeView = ({ currentLine }: CodeViewProps) => {
+  const [explanation, setExplanation] = useState('') // The explanation from the AI model
+  const [loading, setLoading] = useState(false) // To manage loading state
+  const [error, setError] = useState<string | null>(null) // To manage any error
+
   const rock_paper_scissor_code = [
     'def play_round(player_choice):',
     '    # Define the possible choices',
@@ -25,18 +30,51 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
     '    return "You lose!"',
   ]
 
+  const handleExplain = async (index: number) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const result = await getExplanation(
+        rock_paper_scissor_code[index],
+        'rock paper scissors'
+      ) // Get the explanation from the backend
+      setExplanation(result) // Set the explanation state
+    } catch (error) {
+      setError('An error occurred while fetching the explanation.')
+    } finally {
+      setLoading(false) // End the loading state
+    }
+  }
+
   // Display code line by line from array
   let codeLines = rock_paper_scissor_code.map((line, index) => {
     return (
-      <h3 key={index} className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
-        {index}: {line}
-      </h3>
+      <div key={index} className='flex'>
+        <h3 className={index === currentLine ? 'bg-yellow-400' : ''}>
+          {index}: {line}
+        </h3>
+        <button
+          className='border-2 border-solid border-black'
+          onClick={() => {
+            handleExplain(index)
+          }}
+          disabled={loading}
+        >
+          {loading ? 'Explaining...' : 'Explain Code'}
+        </button>
+      </div>
     )
   })
 
   return (
     <div>
-      <div className='codeview'>{codeLines}</div>
+      {explanation && (
+        <div>
+          <h2>Explanation:</h2>
+          <p>{explanation}</p>
+        </div>
+      )}
+      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
     </div>
   )
 }
