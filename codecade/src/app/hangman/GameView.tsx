@@ -168,7 +168,7 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     .join(' ')
 
   return (
-    <div className='border-4 border-solid border-black p-4 w-[500px] flex flex-col items-center '>
+    <div className='gameview'>
       <h1>{gameOver ? 'Game Over' : ''}</h1>
       <h1>{playerWon ? 'You Win!' : ''}</h1>
       <div className='justify-self-center'>{renderHangman}</div>

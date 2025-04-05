@@ -12,10 +12,19 @@ body{
     font-size: 60px;
     color: #FCC067;
     -webkit-text-stroke: #A4752F;
-    margin-top: 10%;
     font-family: Dogica;
     -webkit-text-stroke-width: 1.5px;
     text-align: center;
+}
+
+#select-title{
+    font-size: 60px;
+    color: #FCC067;
+    -webkit-text-stroke: #A4752F;
+    font-family: Dogica;
+    -webkit-text-stroke-width: 1.5px;
+    text-align: center;
+    margin-top: 10%;
 }
 
 .game-select-list{

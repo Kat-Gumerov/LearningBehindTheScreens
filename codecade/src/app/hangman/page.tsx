@@ -1,4 +1,5 @@
 'use client'
+import '../styles/dualscreen.css'
 import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
@@ -55,26 +56,38 @@ const page = () => {
 
   return (
     <div>
-      <Link href={'../'}>
-        <button className='border-2 border-solid border-black p-2'>Home</button>
+      <div>
+      {/* back button */}
+      <Link href={'..'}>
+        <button className='back-button'>
+        <img src="/images/arrow.png" alt="Back" width="100" height="100"/>
+        </button>
       </Link>
-      {/* code speed buttons */}
-      <h1>Code Speed : {codeSpeed / 1000}s</h1>
-      <button
-        onClick={slowDown}
-        className='border-2 border-solid border-black p-2'
-      >
-        Slow Down
-      </button>
-      <button
-        onClick={speedUp}
-        className='border-2 border-solid border-black p-2'
-      >
-        Speed Up
-      </button>
+      </div>
+      {/* title */}
+      <div>
+        <h1 className='title'>Hangman</h1>
+      </div>
 
       {/* displaying Game View and Code View */}
-      <div className='flex justify-around'>
+      <div className='dualscreen-container'>
+      {/* code speed buttons */}
+      <div className='speed-buttons'>
+        <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+        <button
+          onClick={slowDown}
+        >
+          <img src="/images/uparrow.png" alt="Back" width="20" height="17"/>
+        </button>
+        <br></br>
+        <button
+          onClick={speedUp}
+        >
+          <img src="/images/downarrow.png" alt="Back" width="20" height="17"/>
+        </button>
+      </div>
+
+
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}

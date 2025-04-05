@@ -17,13 +17,13 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [compWins, setCompWins] = useState(false)
 
   const options = ['ROCK', 'PAPER', 'SCISSOR']
-  // type Option = typeof options[number]; // "ROCK" | "PAPER" | "SCISSOR"
+  type Option = typeof options[number]; // "ROCK" | "PAPER" | "SCISSOR"
 
-  // const imageMap: Record<Option, string> = {
-  //   ROCK: '/images/rock.png',
-  //   PAPER: '/images/paper.png',
-  //   SCISSOR: '/images/scissors.png'
-  // };
+  const imageMap: Record<Option, string> = {
+    ROCK: '/images/rock.png',
+    PAPER: '/images/paper.png',
+    SCISSOR: '/images/scissors.png'
+  };
 
   // const options = [
   //   <img src="/images/rock.png" alt="Rock" width="100" height="17"/>,
@@ -82,12 +82,12 @@ let userChoices = options.map((option, index) => {
       onClick={gameLogic}
       disabled={buttonDisabled}
     >
-      {/* <img 
+      <img 
         src={imageMap[option]} 
         alt={option.toLowerCase()} 
         width="100"
         height="100"
-      /> */}
+      /> 
       {option}
     </button>
   )

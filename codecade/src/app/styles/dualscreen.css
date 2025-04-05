@@ -1,0 +1,60 @@
+body{
+    background-color: #57BEE7;
+}
+
+.title{
+    font-size: 55px;
+    font-family: Dogica;
+    color: #FCC067;
+    -webkit-text-stroke: #A4752F;
+    -webkit-text-stroke-width: 2px;
+    text-align: center;
+}
+
+.codeview{
+    background-color: #2D265F;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.gameview{
+    background-color: #D8F4FF;
+    padding: 25px 50px;
+    font-family: DaysOne;
+    max-width: 80%;
+    text-align: center;
+}
+
+.gameview, .codeview{
+    padding: 20px 50px;
+    min-width: 40%;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: #498BC0;
+}
+
+.dualscreen-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+    gap: 20px;
+}
+
+.gameview-text{
+    text-align: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.code-speed{
+    color: white;
+}
+
+
+.speed-buttons{
+    margin-left: 20px;
+    font-family: DaysOne;
+}

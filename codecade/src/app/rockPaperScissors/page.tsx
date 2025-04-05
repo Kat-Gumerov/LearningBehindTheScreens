@@ -6,7 +6,6 @@ import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 
-import { Pixelify_Sans } from 'next/font/google'; //pixel font
 
 const page = () => {
   const [currentLine, setCurrentLine] = useState(0)
@@ -76,7 +75,7 @@ const page = () => {
     {/* displaying Game View and Code View */}
     <div className='dualscreen-container'>
       {/* code speed buttons */}
-      {/* <div className='speed-buttons'>
+      <div className='speed-buttons'>
         <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
         <button
           onClick={slowDown}
@@ -90,7 +89,7 @@ const page = () => {
           <img src="/images/downarrow.png" alt="Back" width="20" height="17"/>
         </button>
       </div>
-        */}
+       
       
       <GameView
       onUserClick={handleUserClick}
