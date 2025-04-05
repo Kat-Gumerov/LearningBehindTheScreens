@@ -28,7 +28,7 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   // Display code line by line from array
   let codeLines = rock_paper_scissor_code.map((line, index) => {
     return (
-      <h3 key={index} className={index === currentLine ? 'bg-yellow-400' : ''}>
+      <h3 key={index} className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
         {index}: {line}
       </h3>
     )
@@ -36,7 +36,7 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
 
   return (
     <div>
-      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+      <div className='codeview'>{codeLines}</div>
     </div>
   )
 }
