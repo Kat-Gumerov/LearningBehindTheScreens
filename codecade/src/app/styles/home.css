@@ -2,13 +2,41 @@ body{
     background-color: #57BEE7;
 }
 
+.center-items{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
 .title{
-    font-size: large;
-    color: blue;
+    font-size: 60px;
+    color: #FCC067;
+    -webkit-text-stroke: #A4752F;
+    margin-top: 10%;
+    font-family: Dogica;
+    -webkit-text-stroke-width: 1.5px;
+    text-align: center;
+}
+
+.game-select-list{
+    margin-bottom: 2%;
+    font-size: 32px;
+    color: #232B7C;
+    font-family: Dogica;
 }
 
 .start-button{
-    color: white;
-    text-align: center;
-    border-radius: 20%;
+    color:white;
+    background-color: #E71C3E;
+    border-color: #831225;
+    border-radius: 12px;
+    border: solid 3px;
+    padding: 15px 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 4px 4px 0px #831225;
+    font-family: Dogica;
 }
+
+
