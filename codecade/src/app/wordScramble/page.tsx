@@ -1,19 +1,15 @@
 'use client'
 import '../styles/dualscreen.css'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 
-const page = () => {
+const Page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
 
-  /*
-   * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
-   */
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
 
@@ -22,30 +18,10 @@ const page = () => {
       await new Promise((resolve) => setTimeout(resolve, codeSpeed))
     }
 
-    // setCurrentLine(2)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(4)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(9)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(11)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
     setCurrentLine(0)
-
     setButtonDisabled(false)
   }
 
-  /* The following two functions change code replay speed */
   const speedUp = () => {
     setCodeSpeed((prevSpeed) => Math.max(200, prevSpeed - 200))
   }
@@ -57,33 +33,31 @@ const page = () => {
   return (
     <div>
       <div>
-        {/* back button */}
-        <Link href={'..'}>
+        <Link href='..'>
           <button className='back-button'>
             <img src='/images/arrow.png' alt='Back' width='100' height='100' />
           </button>
         </Link>
       </div>
-      {/* title */}
+
       <div>
-        <h1 className='title'>Rock Paper Scissors</h1>
-        <div className='speed-buttons flex '>
+        <h1 className='title'>Word Scramble Match</h1>
+        <div className='speed-buttons flex'>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
           <div className='flex flex-col'>
-            {' '}
             <button onClick={speedUp}>
               <img
                 src='/images/uparrow.png'
-                alt='Back'
+                alt='Speed Up'
                 width='20'
                 height='17'
               />
             </button>
-            <br></br>
+            <br />
             <button onClick={slowDown}>
               <img
                 src='/images/downarrow.png'
-                alt='Back'
+                alt='Slow Down'
                 width='20'
                 height='17'
               />
@@ -92,18 +66,15 @@ const page = () => {
         </div>
       </div>
 
-      {/* displaying Game View and Code View */}
       <div className='dualscreen-container'>
-        {/* code speed buttons */}
-
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
-        ></GameView>
-        <CodeView currentLine={currentLine}></CodeView>
+        />
+        <CodeView currentLine={currentLine} />
       </div>
     </div>
   )
 }
 
-export default page
+export default Page

@@ -11,23 +11,15 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   const [error, setError] = useState<string | null>(null)
 
   const word_scramble_code = [
-    'def scramble(word):',
-    '    return "".join(random.sample(word, len(word)))',
-    '',
-    'def play_game():',
-    '    words = ["react", "debug", "code", "script"]',
-    '    original = random.choice(words)',
-    '    scrambled = scramble(original)',
-    '    tries = 3',
+    'def scramble(original_word, scrambled_word):',
     '    while tries > 0:',
-    '        guess = input(f"Guess the word: {scrambled}\\n")',
-    '        if guess.lower() == original:',
-    '            print("Correct!")',
-    '            return',
+    '        guess = input(f"Guess the word: {scrambled_word}\\n")',
+    '        if guess.lower() == original_word:',
+    '            return "Correct!"',
     '        else:',
     '            tries -= 1',
     '            return "Wrong. {tries} tries left."',
-    '    return "You lost! The word was {original}."',
+    '    return "You lost! The word was {original_word}."',
   ]
 
   const handleExplain = async (index: number) => {

@@ -14,6 +14,11 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [triesLeft, setTriesLeft] = useState(3)
   const [result, setResult] = useState('')
 
+  // arrays of code lines and their orders based on each outcome of the game
+  const correct_guess = [1, 2, 3, 4]
+  const incorrect_guess = [1, 2, 3, 5, 6, 7]
+  const lost_game = [1, 2, 3, 5, 6, 7, 8]
+
   useEffect(() => {
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)]
     setOriginalWord(randomWord)
@@ -30,15 +35,16 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const handleGuess = () => {
     if (userGuess.toUpperCase() === originalWord) {
       setResult('You guessed it right! 🎉')
-      onUserClick([1, 2, 3]) // example code array
+      onUserClick(correct_guess) // example code array
     } else {
       const newTries = triesLeft - 1
       setTriesLeft(newTries)
       if (newTries === 0) {
         setResult(`You lost! The word was ${originalWord}.`)
-        onUserClick([4, 5, 6]) // example code array
+        onUserClick(lost_game) // example code array
       } else {
         setResult(`Wrong guess. ${newTries} tries left.`)
+        onUserClick(incorrect_guess)
       }
     }
     setUserGuess('')
