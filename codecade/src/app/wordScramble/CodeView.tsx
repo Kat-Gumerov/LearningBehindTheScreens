@@ -6,28 +6,28 @@ interface CodeViewProps {
 }
 
 const CodeView = ({ currentLine }: CodeViewProps) => {
-  const [explanation, setExplanation] = useState('') // The explanation from the AI model
-  const [loading, setLoading] = useState(false) // To manage loading state
-  const [error, setError] = useState<string | null>(null) // To manage any error
+  const [explanation, setExplanation] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const rock_paper_scissor_code = [
-    'def play_round(player_choice):',
-    '    # Define the possible choices',
-    '    choices = ["rock", "paper", "scissors"]',
-    '    # Generate a random choice for the computer',
-    '    computer_choice = random.choice(choices)',
-    "    # Check if it's a tie",
-    '    if player_choice == computer_choice:',
-    '        return "It\'s a tie!"',
-    '    # Check if the player wins',
-    '    if (player_choice == "rock" and computer_choice == "scissors"):',
-    '        return "You win!"',
-    '    if (player_choice == "scissors" and computer_choice == "paper"):',
-    '        return "You win!"',
-    '    if (player_choice == "paper" and computer_choice == "rock"):',
-    '        return "You win!"',
-    '    # If none of the above, the computer wins',
-    '    return "You lose!"',
+  const word_scramble_code = [
+    'def scramble(word):',
+    '    return "".join(random.sample(word, len(word)))',
+    '',
+    'def play_game():',
+    '    words = ["react", "debug", "code", "script"]',
+    '    original = random.choice(words)',
+    '    scrambled = scramble(original)',
+    '    tries = 3',
+    '    while tries > 0:',
+    '        guess = input(f"Guess the word: {scrambled}\\n")',
+    '        if guess.lower() == original:',
+    '            print("Correct!")',
+    '            return',
+    '        else:',
+    '            tries -= 1',
+    '            return "Wrong. {tries} tries left."',
+    '    return "You lost! The word was {original}."',
   ]
 
   const handleExplain = async (index: number) => {
@@ -35,29 +35,26 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
     setError(null)
     try {
       const result = await getExplanation(
-        rock_paper_scissor_code[index],
-        'rock paper scissors'
-      ) // Get the explanation from the backend
-      setExplanation(result) // Set the explanation state
+        word_scramble_code[index],
+        'word scramble game'
+      )
+      setExplanation(result)
     } catch (error) {
       setError('An error occurred while fetching the explanation.')
     } finally {
-      setLoading(false) // End the loading state
+      setLoading(false)
     }
   }
 
-  // Display code line by line from array
-  let codeLines = rock_paper_scissor_code.map((line, index) => {
+  const codeLines = word_scramble_code.map((line, index) => {
     return (
-      <div key={index} className='flex'>
+      <div key={index} className='flex items-center gap-2 my-1'>
         <h3 className={index === currentLine ? 'bg-yellow-400' : ''}>
           {index}: {line}
         </h3>
         <button
-          className='border-2 border-solid border-black'
-          onClick={() => {
-            handleExplain(index)
-          }}
+          className='border-2 border-black px-2 py-1 rounded'
+          onClick={() => handleExplain(index)}
           disabled={loading}
         >
           {loading ? 'Explaining...' : 'Explain Code'}
@@ -68,14 +65,11 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
 
   return (
     <div>
-      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
-      <div>
-        <h2>Explanation:</h2>
-        <p>{explanation}</p>
-      </div>
+      <div className='border-4 border-black p-4'>{codeLines}</div>
+      {error && <p className='text-red-600'>{error}</p>}
       {explanation && (
-        <div>
-          <h2>Explanation:</h2>
+        <div className='mt-4'>
+          <h2 className='text-lg font-bold'>Explanation:</h2>
           <p>{explanation}</p>
         </div>
       )}
