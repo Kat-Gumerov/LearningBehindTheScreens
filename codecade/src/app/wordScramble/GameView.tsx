@@ -1,9 +1,5 @@
 'use client'
-import React, { MouseEvent } from 'react'
-import { useState } from 'react'
-import rockImg from '/images/rock.png'
-import paperImg from '/images/paper.png'
-import scissorImg from '/images/scissors.png'
+import React, { useState, useEffect } from 'react'
 
 interface GameViewProps {
   onUserClick: (codeArray: number[]) => void
@@ -11,137 +7,66 @@ interface GameViewProps {
 }
 
 const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
-  const [playerChoice, setPlayerChoice] = useState('')
-  const [compChoice, setCompChoice] = useState('')
-  const [playerWins, setPlayerWins] = useState(false)
-  const [compWins, setCompWins] = useState(false)
+  const wordList = ['REACT', 'JAVASCRIPT', 'PROGRAM', 'COMPILER', 'DEBUG']
+  const [originalWord, setOriginalWord] = useState('')
+  const [scrambledWord, setScrambledWord] = useState('')
+  const [userGuess, setUserGuess] = useState('')
+  const [triesLeft, setTriesLeft] = useState(3)
+  const [result, setResult] = useState('')
 
-  const options = ['ROCK', 'PAPER', 'SCISSOR']
-  type Option = (typeof options)[number] // "ROCK" | "PAPER" | "SCISSOR"
+  useEffect(() => {
+    const randomWord = wordList[Math.floor(Math.random() * wordList.length)]
+    setOriginalWord(randomWord)
+    setScrambledWord(scramble(randomWord))
+  }, [])
 
-  // const imageMap: Record<Option, string> = {
-  //   ROCK: '/images/rock.png',
-  //   PAPER: '/images/paper.png',
-  //   SCISSOR: '/images/scissors.png',
-  // }
-
-  // const options = [
-  //   <img src="/images/rock.png" alt="Rock" width="100" height="17"/>,
-  //   <img src="/images/paper.png" alt="Paper" width="100" height="17"/>,
-  //   <img src="/images/scissors.png" alt="Scissors" width="100" height="17"/>,
-  // ]
-
-  // arrays of code lines and their orders based on each outcome of the game
-  const playerWinsRock = [0, 2, 4, 6, 9, 10]
-  const playerWinsPaper = [0, 2, 4, 6, 9, 11, 13, 14]
-  const playerWinsScissor = [0, 2, 4, 6, 9, 11, 12]
-  const playerLoses = [0, 2, 4, 6, 9, 11, 13, 16]
-  const playerTies = [0, 2, 4, 6, 7]
-
-  /*
-   * Accepts the button click event and sets the players choice, computer choice, the winner and
-   *then calls the onUser click function with the specific scenario array to be displayed
-   */
-
-  const gameLogic = async (e: MouseEvent<HTMLButtonElement>) => {
-    const players_choice = e.currentTarget.dataset.choice as Option
-    const comp_choice = options[Math.floor(Math.random() * options.length)]
-
-    console.log(players_choice)
-
-    setPlayerChoice(players_choice)
-
-    setCompChoice(comp_choice)
-
-    if (players_choice === comp_choice) {
-      onUserClick(playerTies)
-      setPlayerWins(false)
-      setCompWins(false)
-    } else if (players_choice === 'ROCK' && comp_choice === 'SCISSOR') {
-      onUserClick(playerWinsRock)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else if (players_choice === 'SCISSOR' && comp_choice === 'PAPER') {
-      onUserClick(playerWinsScissor)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else if (players_choice === 'PAPER' && comp_choice === 'ROCK') {
-      onUserClick(playerWinsPaper)
-      setPlayerWins(true)
-      setCompWins(false)
-    } else {
-      onUserClick(playerLoses)
-      setPlayerWins(false)
-      setCompWins(true)
-    }
+  const scramble = (word: string): string => {
+    return word
+      .split('')
+      .sort(() => Math.random() - 0.5)
+      .join('')
   }
 
-  // Display each option for player
-  // let userChoices = options.map((option, index) => {
-  //   return (
-  //     <button key={index} onClick={gameLogic} disabled={buttonDisabled}>
-  //       <img
-  //         src={imageMap[option]}
-  //         alt={option.toLowerCase()}
-  //         width='100'
-  //         height='100'
-  //       />
-  //       {option}
-  //     </button>
-  //   )
-  // })
+  const handleGuess = () => {
+    if (userGuess.toUpperCase() === originalWord) {
+      setResult('You guessed it right! 🎉')
+      onUserClick([1, 2, 3]) // example code array
+    } else {
+      const newTries = triesLeft - 1
+      setTriesLeft(newTries)
+      if (newTries === 0) {
+        setResult(`You lost! The word was ${originalWord}.`)
+        onUserClick([4, 5, 6]) // example code array
+      } else {
+        setResult(`Wrong guess. ${newTries} tries left.`)
+      }
+    }
+    setUserGuess('')
+  }
 
   return (
-    <div className='gameview'>
-      <div className='game_states flex justify-around'>
-        {/* color winner text in green */}
-        <h1 className={playerWins ? 'text-green-700' : ''}>
-          Your Choice: {playerChoice}
-        </h1>
+    <div className='gameview text-center'>
+      <h1 className='text-xl font-bold'>Word Scramble Game</h1>
+      <h2 className='text-2xl my-4'>Scrambled Word: {scrambledWord}</h2>
 
-        <h1 className={compWins ? 'text-green-700' : ''}>
-          Computer's Choice: {compChoice}
-        </h1>
-      </div>
-      <h1 className='gameview-text'>
-        {/* 'Display game results' */}
-        {playerChoice && playerChoice === compChoice ? "It's a tie!" : ''}
-        {playerWins ? 'You win!' : ''}
-        {compWins ? 'You lose!' : ''}
-      </h1>
-      {/* Display player options */}
-      <h2 className='gameview-text'>Choose One:</h2>
-      <div className='flex justify-around'>
-        <button
-          data-choice='ROCK'
-          onClick={gameLogic}
-          disabled={buttonDisabled}
-        >
-          <img src='/images/rock.png' alt='Rock' width='100' height='17' />
-          <p>Rock</p>
-        </button>
-        <button
-          data-choice='PAPER'
-          onClick={gameLogic}
-          disabled={buttonDisabled}
-        >
-          <img src='/images/paper.png' alt='Paper' width='100' height='17' />
-          <p>Paper</p>
-        </button>
-        <button
-          data-choice='SCISSOR'
-          onClick={gameLogic}
-          disabled={buttonDisabled}
-        >
-          <img
-            src='/images/scissors.png'
-            alt='Scissors'
-            width='100'
-            height='17'
-          />
-          <p>Scissors</p>
-        </button>
-      </div>
+      <input
+        type='text'
+        value={userGuess}
+        onChange={(e) => setUserGuess(e.target.value)}
+        className='border p-2 rounded text-black'
+        disabled={triesLeft === 0 || result.includes('guessed')}
+      />
+      <button
+        onClick={handleGuess}
+        disabled={
+          triesLeft === 0 || result.includes('guessed') || buttonDisabled
+        }
+        className='ml-2 px-4 py-2 bg-slate-50 rounded'
+      >
+        Guess
+      </button>
+
+      <h3 className='mt-4'>{result}</h3>
     </div>
   )
 }
