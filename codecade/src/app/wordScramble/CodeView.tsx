@@ -1,0 +1,86 @@
+import React, { useState } from 'react'
+import { getExplanation } from '../../../utils/api'
+
+interface CodeViewProps {
+  currentLine: number
+}
+
+const CodeView = ({ currentLine }: CodeViewProps) => {
+  const [explanation, setExplanation] = useState('') // The explanation from the AI model
+  const [loading, setLoading] = useState(false) // To manage loading state
+  const [error, setError] = useState<string | null>(null) // To manage any error
+
+  const rock_paper_scissor_code = [
+    'def play_round(player_choice):',
+    '    # Define the possible choices',
+    '    choices = ["rock", "paper", "scissors"]',
+    '    # Generate a random choice for the computer',
+    '    computer_choice = random.choice(choices)',
+    "    # Check if it's a tie",
+    '    if player_choice == computer_choice:',
+    '        return "It\'s a tie!"',
+    '    # Check if the player wins',
+    '    if (player_choice == "rock" and computer_choice == "scissors"):',
+    '        return "You win!"',
+    '    if (player_choice == "scissors" and computer_choice == "paper"):',
+    '        return "You win!"',
+    '    if (player_choice == "paper" and computer_choice == "rock"):',
+    '        return "You win!"',
+    '    # If none of the above, the computer wins',
+    '    return "You lose!"',
+  ]
+
+  const handleExplain = async (index: number) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const result = await getExplanation(
+        rock_paper_scissor_code[index],
+        'rock paper scissors'
+      ) // Get the explanation from the backend
+      setExplanation(result) // Set the explanation state
+    } catch (error) {
+      setError('An error occurred while fetching the explanation.')
+    } finally {
+      setLoading(false) // End the loading state
+    }
+  }
+
+  // Display code line by line from array
+  let codeLines = rock_paper_scissor_code.map((line, index) => {
+    return (
+      <div key={index} className='flex'>
+        <h3 className={index === currentLine ? 'bg-yellow-400' : ''}>
+          {index}: {line}
+        </h3>
+        <button
+          className='border-2 border-solid border-black'
+          onClick={() => {
+            handleExplain(index)
+          }}
+          disabled={loading}
+        >
+          {loading ? 'Explaining...' : 'Explain Code'}
+        </button>
+      </div>
+    )
+  })
+
+  return (
+    <div>
+      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+      <div>
+        <h2>Explanation:</h2>
+        <p>{explanation}</p>
+      </div>
+      {explanation && (
+        <div>
+          <h2>Explanation:</h2>
+          <p>{explanation}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default CodeView
