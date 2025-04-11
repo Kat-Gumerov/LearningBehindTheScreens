@@ -45,11 +45,15 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
           {index}: {line}
         </h3>
         <button
-          className='border-2 border-black px-2 py-1 rounded'
           onClick={() => handleExplain(index)}
           disabled={loading}
         >
-          {loading ? 'Explaining...' : 'Explain Code'}
+          {loading ? 'Explaining...' : ''}
+          <img 
+            src='images/challenge.png'
+            alt="explain icon"
+            className="w-7 h-7"
+          ></img>
         </button>
       </div>
     )

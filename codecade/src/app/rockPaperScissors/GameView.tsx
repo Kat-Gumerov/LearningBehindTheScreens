@@ -87,12 +87,13 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   return (
     <div className='gameview'>
-      <div className='game_states flex justify-around'>
+      <div className='game_states'>
         {/* color winner text in green */}
         <h1 className={playerWins ? 'text-green-700' : ''}>
           Your Choice: {playerChoice}
+          {"\n"}
         </h1>
-
+        
         <h1 className={compWins ? 'text-green-700' : ''}>
           Computer's Choice: {compChoice}
         </h1>

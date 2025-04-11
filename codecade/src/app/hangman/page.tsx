@@ -56,37 +56,45 @@ const page = () => {
 
   return (
     <div>
-      <div>
-      {/* back button */}
-      <Link href={'..'}>
-        <button className='back-button'>
-        <img src="/images/arrow.png" alt="Back" width="100" height="100"/>
-        </button>
-      </Link>
+      <div className='flex items-center'>
+        {/* back button */}
+        <Link href={'..'}>
+          <button>
+            <img src='/images/arrow.png' alt='Back' width='100' height='100' />
+          </button>
+        </Link>
+        <div className="flex-1 text-center">
+          <h1 className="title">Hangman</h1>
+        </div>
       </div>
-      {/* title */}
+      
       <div>
-        <h1 className='title'>Hangman</h1>
+        <div className='speed-buttons flex '>
+          <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+          <div className='flex flex-col ml-2'>
+            {' '}
+            <button onClick={speedUp} className='mb-1'>
+              <img
+                src='/images/uparrow.png'
+                alt='Back'
+                width='16'
+                height='13'
+              />
+            </button>
+            <button onClick={slowDown}>
+              <img
+                src='/images/downarrow.png'
+                alt='Back'
+                width='16'
+                height='13'
+              />
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* displaying Game View and Code View */}
       <div className='dualscreen-container'>
-      {/* code speed buttons */}
-      <div className='speed-buttons'>
-        <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
-        <button
-          onClick={slowDown}
-        >
-          <img src="/images/uparrow.png" alt="Back" width="20" height="17"/>
-        </button>
-        <br></br>
-        <button
-          onClick={speedUp}
-        >
-          <img src="/images/downarrow.png" alt="Back" width="20" height="17"/>
-        </button>
-      </div>
-
 
         <GameView
           onUserClick={handleUserClick}

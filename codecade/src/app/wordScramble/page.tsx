@@ -32,46 +32,51 @@ const Page = () => {
 
   return (
     <div>
-      <div>
-        <Link href='..'>
-          <button className='back-button'>
+      <div className='flex items-center'>
+        {/* back button */}
+        <Link href={'..'}>
+          <button>
             <img src='/images/arrow.png' alt='Back' width='100' height='100' />
           </button>
         </Link>
+        <div className="flex-1 text-center">
+          <h1 className="title">Word Scramble</h1>
+        </div>
       </div>
-
+      
       <div>
-        <h1 className='title'>Word Scramble</h1>
-        <div className='speed-buttons flex'>
+        <div className='speed-buttons flex '>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
-          <div className='flex flex-col'>
-            <button onClick={speedUp}>
+          <div className='flex flex-col ml-2'>
+            {' '}
+            <button onClick={speedUp} className='mb-1'>
               <img
                 src='/images/uparrow.png'
-                alt='Speed Up'
-                width='20'
-                height='17'
+                alt='Back'
+                width='16'
+                height='13'
               />
             </button>
-            <br />
             <button onClick={slowDown}>
               <img
                 src='/images/downarrow.png'
-                alt='Slow Down'
-                width='20'
-                height='17'
+                alt='Back'
+                width='16'
+                height='13'
               />
             </button>
           </div>
         </div>
       </div>
 
+      {/* displaying Game View and Code View */}
       <div className='dualscreen-container'>
+
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
-        />
-        <CodeView currentLine={currentLine} />
+        ></GameView>
+        <CodeView currentLine={currentLine}></CodeView>
       </div>
     </div>
   )
