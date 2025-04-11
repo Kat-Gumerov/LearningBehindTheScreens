@@ -1,23 +1,25 @@
 "use client";
-import React from 'react'
-import '../styles/contact.css'
+import React from 'react';
+import '../styles/contact.css';
 import emailjs from 'emailjs-com';
 
 const SERVICE_ID = "service_647gs9b";
 const TEMPLATE_ID = "template_9286of6";
 const PUBLIC_KEY = "kGD9MQ4qOffUEhQpK";  
 const Contact = () => {
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       console.log("Sending email...");
-      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target as HTMLFormElement, PUBLIC_KEY)
+
         .then((result) => {
           alert('Message Sent Successfully')
         }, (error) => {
           console.log(error.text);
           alert('Something went wrong!')
         });
-      e.target.reset()
+        (form as HTMLFormElement).reset();
+
     };
 
   
