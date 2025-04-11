@@ -5,12 +5,20 @@ body{
 
 .header{
     font-size: xxx-large;
+    font-weight: bold;
+    font-family: Comic Sans MS, Comic Sans, cursive;
     color: rgb(0, 0, 109)
 }
 
 .info{
-    font-size: x-large;
+    font-size: large;
+    font-family: Verdana, sans-serif;
     color: white
 }
 
-
+.team{
+    font-size: x-large;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;
+    color: #FFD166
+}
