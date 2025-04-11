@@ -1,9 +1,5 @@
 body{
     background-color: #57BEE7;
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-    margin: 0;
 }
 
 .title{
@@ -20,40 +16,25 @@ body{
     background-color: #2D265F;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-
-    min-width: 60vh;
-    max-width: 110vh;
+    max-width: 80%;
 }
 
 .gameview{
     background-color: #D8F4FF;
     padding: 25px 50px;
     font-family: DaysOne;
+    max-width: 80%;
     text-align: center;
-    
-    min-width: 20vh;
-    max-width: 55vh;
 }
 
-.gameview, .codeview{
+.gameview, .codeview, .ai-container{
     padding: 20px 50px;
-    overflow-y: auto;
-    margin-bottom: 10%;
+    min-width: 40%;
 
-    height: 60vh;
-    /* max-height:220px; */
-    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border-width: 5px;
     border-color: #498BC0;
-}
-
-.dualscreen-container{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    gap: 20px;
 }
 
 .ai-container{
@@ -70,6 +51,15 @@ body{
     color: #434993;
 }
 
+.dualscreen-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px;
+    gap: 20px;
+}
+
 .gameview-text{
     text-align: center;
     align-items: center;
@@ -79,6 +69,7 @@ body{
 .code-speed{
     color: white;
 }
+
 
 .speed-buttons{
     margin-left: 20px;

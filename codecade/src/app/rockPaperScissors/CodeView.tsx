@@ -50,7 +50,7 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   let codeLines = rock_paper_scissor_code.map((line, index) => {
     return (
       <div key={index} className='flex'>
-        <h3 className={index === currentLine ? 'bg-yellow-400' : ''}>
+        <h3 className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
           {index}: {line}
         </h3>
         <button
@@ -68,17 +68,20 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
 
   return (
     <div>
-      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
-      <div>
-        <h2>Explanation:</h2>
-        <p>{explanation}</p>
+      <div className='codeview'>{codeLines}</div>
+
+      <div className='ai-container'>
+        {error && <p className='text-red-600'>{error}</p>}
+        {explanation && (
+          <div className='mt-4'>
+            <h2 className='text-lg font-bold'>Explanation:</h2>
+            <p>{explanation}</p>
+          </div>
+        )}
       </div>
-      {explanation && (
-        <div>
-          <h2>Explanation:</h2>
-          <p>{explanation}</p>
-        </div>
-      )}
+
+
+        
     </div>
   )
 }

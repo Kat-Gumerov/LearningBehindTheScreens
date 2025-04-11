@@ -12,7 +12,7 @@ export default function Home() {
       </Router>
       {/*game menu*/}
       <div className='text-center'>
-        <h1 id='select-title'>GAME SELECT</h1>
+        <h1 id='select-title'>SELECT GAME</h1>
         <br />
         <ul className='game-select-list space-y-2'>
           <Link href='/rockPaperScissors'>

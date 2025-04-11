@@ -25,12 +25,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   //   SCISSOR: '/images/scissors.png',
   // }
 
-  // const options = [
-  //   <img src="/images/rock.png" alt="Rock" width="100" height="17"/>,
-  //   <img src="/images/paper.png" alt="Paper" width="100" height="17"/>,
-  //   <img src="/images/scissors.png" alt="Scissors" width="100" height="17"/>,
-  // ]
-
   // arrays of code lines and their orders based on each outcome of the game
   const playerWinsRock = [0, 2, 4, 6, 9, 10]
   const playerWinsPaper = [0, 2, 4, 6, 9, 11, 13, 14]
