@@ -1,0 +1,29 @@
+body{
+    background-color: #57BEE7;
+}
+
+
+.header{
+    font-size: xxx-large;
+    color: rgb(0, 0, 109)
+}
+
+.improve{
+    font-size: x-large;
+    color: white
+}
+
+.gmail{
+    font-size: large;
+    color: rgb(0, 0, 109);
+    text-decoration: underline;
+}
+
+.emailForm{
+    font-size: x-large;
+}
+
+.formName{
+    font-size: xxx-large;
+    color: rgb(0, 0, 109)
+}
