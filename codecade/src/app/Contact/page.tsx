@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import '../styles/contact.css';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = "service_647gs9b";
 const TEMPLATE_ID = "template_9286of6";
