@@ -1,0 +1,1 @@
+2025-03-19 03:07:03 - INFO - {"timestamp": "2025-03-19T07:07:03.355397", "event_type": "test_event", "details": {"user": "test_user", "action": "clicked_button"}}
