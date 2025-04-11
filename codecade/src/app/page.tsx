@@ -7,6 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 export default function Home() {
   return (
     <div>
+
       <Router>
         <Navbar />
       </Router>
@@ -28,5 +29,6 @@ export default function Home() {
         {/* <button className='start-button'>START</button> */}
       </div>
     </div> 
+
   )
 }
