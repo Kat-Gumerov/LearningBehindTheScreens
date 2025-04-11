@@ -69,23 +69,22 @@ const page = () => {
         <h1 className='title'>Rock Paper Scissors</h1>
         <div className='speed-buttons flex '>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
-          <div className='flex flex-col'>
+          <div className='flex flex-col ml-2'>
             {' '}
-            <button onClick={speedUp}>
+            <button onClick={speedUp} className='mb-1'>
               <img
                 src='/images/uparrow.png'
                 alt='Back'
-                width='20'
-                height='17'
+                width='16'
+                height='13'
               />
             </button>
-            <br></br>
             <button onClick={slowDown}>
               <img
                 src='/images/downarrow.png'
                 alt='Back'
-                width='20'
-                height='17'
+                width='16'
+                height='13'
               />
             </button>
           </div>
