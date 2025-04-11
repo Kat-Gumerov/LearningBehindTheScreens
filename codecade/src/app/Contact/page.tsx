@@ -9,6 +9,7 @@ const PUBLIC_KEY = "kGD9MQ4qOffUEhQpK";
 const Contact = () => {
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const form = e.target as HTMLFormElement;
       console.log("Sending email...");
       emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target as HTMLFormElement, PUBLIC_KEY)
 
