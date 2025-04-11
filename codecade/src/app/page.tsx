@@ -1,23 +1,34 @@
+'use client'
 import Link from 'next/link'
+import './styles/home.css'
+import Navbar from './components/Navbar'
+import {BrowserRouter as Router} from 'react-router-dom';
 
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to Codecade!!!</h1>
-      <br />
-      {/* game menu */}
-      <h1>Games:</h1>
-      <ul>
-        <Link href='/rockPaperScissors'>
-          <li>Rock Paper Scissors</li>
-        </Link>
-        <Link href='/hangman'>
-          <li>Hangman</li>
-        </Link>
-        <li>Word Scramble</li>
-      </ul>
-      <Link href='/Contact'><h1>Contact</h1></Link>
-      <Link href='/AboutUs'><h1>About Us</h1></Link>
-    </div>
+
+      <Router>
+        <Navbar />
+      </Router>
+      {/*game menu*/}
+      <div className='text-center'>
+        <h1 id='select-title'>SELECT GAME</h1>
+        <br />
+        <ul className='game-select-list space-y-2'>
+          <Link href='/rockPaperScissors'>
+            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Rock Paper Scissors</li>
+          </Link>
+          <Link href='/hangman'>
+            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Hangman</li>
+          </Link>
+          <Link href='/wordScramble'>
+            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Word Scramble</li>
+          </Link>
+        </ul>
+        {/* <button className='start-button'>START</button> */}
+      </div>
+    </div> 
+
   )
 }

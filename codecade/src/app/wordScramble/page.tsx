@@ -1,19 +1,15 @@
 'use client'
 import '../styles/dualscreen.css'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 
-const page = () => {
+const Page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
 
-  /*
-   * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
-   */
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
 
@@ -22,30 +18,10 @@ const page = () => {
       await new Promise((resolve) => setTimeout(resolve, codeSpeed))
     }
 
-    // setCurrentLine(2)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(4)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(9)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(11)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
     setCurrentLine(0)
-
     setButtonDisabled(false)
   }
 
-  /* The following two functions change code replay speed */
   const speedUp = () => {
     setCodeSpeed((prevSpeed) => Math.max(200, prevSpeed - 200))
   }
@@ -64,7 +40,7 @@ const page = () => {
           </button>
         </Link>
         <div className="flex-1 text-center">
-          <h1 className="title">Hangman</h1>
+          <h1 className="title">Word Scramble</h1>
         </div>
       </div>
       
@@ -106,4 +82,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -1,4 +1,5 @@
 'use client'
+import '../styles/dualscreen.css'
 import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
@@ -55,26 +56,46 @@ const page = () => {
 
   return (
     <div>
-      <Link href={'../'}>
-        <button className='border-2 border-solid border-black p-2'>Home</button>
-      </Link>
-      {/* code speed buttons */}
-      <h1>Code Speed : {codeSpeed / 1000}s</h1>
-      <button
-        onClick={slowDown}
-        className='border-2 border-solid border-black p-2'
-      >
-        Slow Down
-      </button>
-      <button
-        onClick={speedUp}
-        className='border-2 border-solid border-black p-2'
-      >
-        Speed Up
-      </button>
+      <div className='flex items-center'>
+        {/* back button */}
+        <Link href={'..'}>
+          <button>
+            <img src='/images/arrow.png' alt='Back' width='100' height='100' />
+          </button>
+        </Link>
+        <div className="flex-1 text-center">
+          <h1 className="title">Rock Paper Scissors</h1>
+        </div>
+      </div>
+      
+      <div>
+        <div className='speed-buttons flex '>
+          <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+          <div className='flex flex-col ml-2'>
+            {' '}
+            <button onClick={speedUp} className='mb-1'>
+              <img
+                src='/images/uparrow.png'
+                alt='Back'
+                width='16'
+                height='13'
+              />
+            </button>
+            <button onClick={slowDown}>
+              <img
+                src='/images/downarrow.png'
+                alt='Back'
+                width='16'
+                height='13'
+              />
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* displaying Game View and Code View */}
-      <div className='flex justify-around'>
+      <div className='dualscreen-container'>
+
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
