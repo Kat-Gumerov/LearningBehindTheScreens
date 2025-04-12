@@ -28,7 +28,7 @@ const page = () => {
     {/* Left Side - Our Photo */}
     </div>
     <div className="flex items-center justify-center min-h-screen py-32">
-    <img src="/images/IMG_2313.jpg" alt="CodeWade" className="border-8 border-blue-500 rounded-lg shadow-lg" />
+    <img src="/images/IMG_5177.PNG" alt="Team Photo" className="border-8 border-blue-500 rounded-lg shadow-lg" />
 </div>
 
 
