@@ -15,8 +15,7 @@ import {
 const Navbar = () => {
   const pathname = usePathname()
 
-  console.log('Current pathname:', pathname)
-  console.log('🔥 Navbar is active and current path is:', pathname)
+  
 
   return (
     <Nav>
@@ -29,8 +28,8 @@ const Navbar = () => {
       <Bars />
 
       <NavMenu>
-        <Link href='/home' legacyBehavior passHref>
-          <NavLink className={pathname === '/home' ? 'active' : ''}>
+        <Link href='/' legacyBehavior passHref>
+          <NavLink className={pathname === '/' ? 'active' : ''}>
             home
           </NavLink>
         </Link>
