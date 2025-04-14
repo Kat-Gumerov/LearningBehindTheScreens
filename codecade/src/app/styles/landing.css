@@ -1,80 +1,83 @@
-body{
-    background-color: #57BEE7;
+body {
+  background-color: #57bee7;
 }
 
-.description{
-    font-family: DaysOne;
-    color: #1D268C;
-    font-size: 60px;
-    display: inline-block;
+.description {
+  font-family: DaysOne;
+  color: #1d268c;
+  font-size: 60px;
+  display: inline-block;
 }
 
-.start-button{
-    background-color: #06D6A0;
-    color: #232B7C;
-    padding: 1% 6%;
-    border-radius: 10px;
-    border: solid 3px;
-    font-family: Dogica;
-    font-size: 1.875em;
-    margin-top: 4%;
-    border-width: 5px;
-    margin-bottom: 4%;
+.start-button {
+  background-color: #06d6a0;
+  color: #232b7c;
+  padding: 1% 6%;
+  border-radius: 10px;
+  border: solid 3px;
+  font-family: Dogica;
+  font-size: 1.875em;
+  margin-top: 4%;
+  border-width: 5px;
+  margin-bottom: 4%;
 
-    /* &:hover{
+  /* &:hover{
         transition: all 0.2 ease-in-out;
         background: #fff;
         color: #010606;
     } */
 }
 
-.flex-container{
-    display: inline-flex;
-    vertical-align: middle;
+.flex-container {
+  display: flex;
+  margin: auto;
+  width: 60%;
 }
 
-.game-display{
-    background-color: white;
-    background-size: over;
-    
+.game-display {
+  background-color: white;
+  background-size: over;
+  padding-bottom: 50px;
 }
 
-.gameboxes{
-    display: flex;
-    justify-content: space-between;
+.gameboxes {
+  display: flex;
+  justify-content: space-between;
 }
 
-#box1{
-    border: solid #CF25D5;
-    background-color: #D9A6DB;
+#box1 {
+  border: solid #cf25d5;
+  background-color: #d9a6db;
 }
 
-#box2{
-    border: solid #DD1D1D;
-    background-color: #F08B8B;
+#box2 {
+  border: solid #dd1d1d;
+  background-color: #f08b8b;
 }
 
-#box3{
-    border: solid 10px #ECDA0D;
-    background-color: #F1E66F;
+#box3 {
+  border: solid 10px #ecda0d;
+  background-color: #f1e66f;
 }
 
-#box1, #box2, #box3 {
-    display: inline;
-    border-width: 2px;
-    font-family: Dogica;
-    text-align: center;
-    width: 30%;
-    height: 30%;
-    font-size: 1.8em;
-    margin: auto;
-
+#box1,
+#box2,
+#box3 {
+  display: flex;
+  border-width: 2px;
+  font-family: Dogica;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 30%;
+  font-size: 2em;
+  margin: auto;
 }
 
-#regFont{
-    padding-top: 2%;
-    padding-bottom: 2%;
-    font-family: DaysOne;
-    color: #232B7C;
-    font-size: 1.875em;
+#regFont {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-family: DaysOne;
+  color: #232b7c;
+  font-size: 1.875em;
 }

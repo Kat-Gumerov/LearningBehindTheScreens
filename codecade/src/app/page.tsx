@@ -44,9 +44,9 @@ export default function Home() {
             <img
               src='../images/pencil.png'
               alt='pencil'
-              className='size-20'
+              className='size-20 ml-5'
             ></img>
-            <p>Word Scramble</p>
+            <p className='gamename'>Word Scramble</p>
           </div>
 
           <div id='box2'>
