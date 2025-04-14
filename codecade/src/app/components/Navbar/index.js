@@ -15,33 +15,39 @@ import {
 const Navbar = () => {
   const pathname = usePathname()
 
-  console.log("Current pathname:", pathname)
-  console.log("🔥 Navbar is active and current path is:", pathname)
-
-
+  console.log('Current pathname:', pathname)
+  console.log('🔥 Navbar is active and current path is:', pathname)
 
   return (
     <Nav>
-      <Link href="/" legacyBehavior passHref>
+      <Link href='/' legacyBehavior passHref>
         <NavLink className={pathname === '/' ? 'active' : ''}>
-          <h1 id="logo-text">CodeCade</h1>
+          <h1 id='logo-text'>CodeCade</h1>
         </NavLink>
       </Link>
 
       <Bars />
 
       <NavMenu>
-        <Link href="/home" legacyBehavior passHref>
-          <NavLink className={pathname === '/landing' ? 'active' : ''}>home</NavLink>
+        <Link href='/home' legacyBehavior passHref>
+          <NavLink className={pathname === '/home' ? 'active' : ''}>
+            home
+          </NavLink>
         </Link>
-        <Link href="/about" legacyBehavior passHref>
-          <NavLink className={pathname === '/about' ? 'active' : ''}>about</NavLink>
+        <Link href='/about' legacyBehavior passHref>
+          <NavLink className={pathname === '/about' ? 'active' : ''}>
+            about
+          </NavLink>
         </Link>
-        <Link href="/contact" legacyBehavior passHref>
-          <NavLink className={pathname === '/contact' ? 'active' : ''}>contact</NavLink>
+        <Link href='/contact' legacyBehavior passHref>
+          <NavLink className={pathname === '/contact' ? 'active' : ''}>
+            contact
+          </NavLink>
         </Link>
-        <Link href="/play" legacyBehavior passHref>
-          <NavBtnLink className={pathname === '/play' ? 'active' : ''}>PLAY</NavBtnLink>
+        <Link href='/play' legacyBehavior passHref>
+          <NavBtnLink className={pathname === '/play' ? 'active' : ''}>
+            PLAY
+          </NavBtnLink>
         </Link>
       </NavMenu>
     </Nav>
@@ -49,5 +55,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-
