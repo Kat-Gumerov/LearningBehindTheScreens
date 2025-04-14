@@ -22,7 +22,9 @@ export default function Home() {
       </div>
 
       <div className='text-center'>
-        <button className='start-button'>Get Started</button>
+        <Link href='play'>
+          <button className='start-button'>Get Started</button>
+        </Link>
       </div>
 
       {/* <div className='text-center'>
