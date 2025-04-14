@@ -44,15 +44,12 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
         <h3 className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
           {index}: {line}
         </h3>
-        <button
-          onClick={() => handleExplain(index)}
-          disabled={loading}
-        >
+        <button onClick={() => handleExplain(index)} disabled={loading}>
           {loading ? 'Explaining...' : ''}
-          <img 
+          <img
             src='images/challenge.png'
-            alt="explain icon"
-            className="w-7 h-7"
+            alt='explain icon'
+            className='w-7 h-7'
           ></img>
         </button>
       </div>
@@ -62,19 +59,6 @@ const CodeView = ({ currentLine }: CodeViewProps) => {
   return (
     <div>
       <div className='codeview'>{codeLines}</div>
-
-      <div className='ai-container'>
-        {error && <p className='text-red-600'>{error}</p>}
-        {explanation && (
-          <div className='mt-4'>
-            <h2 className='text-lg font-bold'>Explanation:</h2>
-            <p>{explanation}</p>
-          </div>
-        )}
-      </div>
-
-
-        
     </div>
   )
 }

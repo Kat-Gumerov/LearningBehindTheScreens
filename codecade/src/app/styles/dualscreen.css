@@ -39,7 +39,7 @@ body {
 .codeview {
   padding: 20px 50px;
   overflow-y: auto;
-  margin-bottom: 10%;
+  margin-bottom: 1%;
 
   height: 60vh;
 
@@ -60,14 +60,18 @@ body {
   background-color: #d8f4ff;
   padding: 25px 50px;
   font-family: DaysOne;
-  max-width: 80%;
+  max-width: 60%;
   text-align: center;
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin: 10px;
+  /* width: 100%; */
   gap: 20px;
   color: #434993;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #498bc0;
+  margin: auto;
 }
 
 .gameview-text {

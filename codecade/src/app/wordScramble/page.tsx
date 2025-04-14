@@ -4,11 +4,15 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
+import { getExplanation } from '../../../utils/api'
 
 const Page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
+  const [explanation, setExplanation] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
@@ -76,6 +80,15 @@ const Page = () => {
           buttonDisabled={buttonDisabled}
         ></GameView>
         <CodeView currentLine={currentLine}></CodeView>
+      </div>
+      <div className='ai-container'>
+        {error && <p className='text-red-600'>{error}</p>}
+        {explanation && (
+          <div className='mt-4'>
+            <h2 className='text-lg font-bold'>Explanation:</h2>
+            <p>{explanation}</p>
+          </div>
+        )}
       </div>
     </div>
   )
