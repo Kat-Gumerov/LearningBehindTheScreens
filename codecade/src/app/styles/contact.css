@@ -1,0 +1,40 @@
+body{
+    background-color: #57BEE7;
+}
+
+
+.header{
+    font-size: 60px;
+    font-weight: bold;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    color: rgb(0, 0, 109)
+}
+
+.improve{
+    font-size: 36px;
+    font-weight: bold;
+    font-family: DaysOne;
+    color: white
+}
+
+.gmail{
+    font-size: 24px;
+    color: rgb(0, 0, 109);
+    text-decoration: underline;
+}
+
+.emailForm{
+    font-size: 36 px;
+}
+
+.formName{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(0, 0, 109)
+}
+
+.contactForm{
+    width: 120%;
+
+}

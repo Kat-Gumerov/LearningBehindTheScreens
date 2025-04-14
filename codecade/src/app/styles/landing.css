@@ -1,0 +1,80 @@
+body{
+    background-color: #57BEE7;
+}
+
+.description{
+    font-family: DaysOne;
+    color: #1D268C;
+    font-size: 60px;
+    display: inline-block;
+}
+
+.start-button{
+    background-color: #06D6A0;
+    color: #232B7C;
+    padding: 1% 6%;
+    border-radius: 10px;
+    border: solid 3px;
+    font-family: Dogica;
+    font-size: 1.875em;
+    margin-top: 4%;
+    border-width: 5px;
+    margin-bottom: 4%;
+
+    /* &:hover{
+        transition: all 0.2 ease-in-out;
+        background: #fff;
+        color: #010606;
+    } */
+}
+
+.flex-container{
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.game-display{
+    background-color: white;
+    background-size: over;
+    
+}
+
+.gameboxes{
+    display: flex;
+    justify-content: space-between;
+}
+
+#box1{
+    border: solid #CF25D5;
+    background-color: #D9A6DB;
+}
+
+#box2{
+    border: solid #DD1D1D;
+    background-color: #F08B8B;
+}
+
+#box3{
+    border: solid 10px #ECDA0D;
+    background-color: #F1E66F;
+}
+
+#box1, #box2, #box3 {
+    display: inline;
+    border-width: 2px;
+    font-family: Dogica;
+    text-align: center;
+    width: 30%;
+    height: 30%;
+    font-size: 1.8em;
+    margin: auto;
+
+}
+
+#regFont{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: DaysOne;
+    color: #232B7C;
+    font-size: 1.875em;
+}
