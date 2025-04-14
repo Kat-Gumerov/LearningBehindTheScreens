@@ -6,7 +6,7 @@ body{
 .header{
     font-size: 60px;
     font-weight: bold;
-    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-family: DaysOne;
     color: rgb(0, 0, 109)
 }
 
@@ -25,6 +25,7 @@ body{
 
 .emailForm{
     font-size: 36 px;
+    font-family: DaysOne;
 }
 
 .formName{
