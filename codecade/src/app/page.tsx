@@ -8,33 +8,27 @@ export default function Home() {
     <div>
       <Navbar />
 
-      <div className='flex-container'>
-        <div className='description'>
-          <h1>See the Code</h1>
+      <div className='flex-container justify-evenly mt-7 w-80 m-8 mb-8'>
+        <div className='description mt-7 flex'>
+          <h1 className='mt-20'>See the Code</h1>
           <h1>Play the Games</h1>
           <h1>Learn the Magic</h1>
         </div>
 
-        <img
-          src='../images/landing-photo.png'
-          alt='Boy playing video games'
-        ></img>
+        <div className='mt-7'>
+          <img
+            src='../images/landing-photo.png'
+            alt='Boy playing video games'
+            className='mt-9'
+          ></img>
+        </div>
       </div>
 
-      <div className='text-center'>
+      <div className='text-center mb-3'>
         <Link href='play'>
           <button className='start-button'>Get Started</button>
         </Link>
       </div>
-
-      {/* <div className='text-center'>
-        <button className="before:ease relative h-12 w-40 overflow-hidden border border-green-500 
-        bg-green-500 text-white shadow-2xl transition-all before:absolute before:right-0 
-        before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white 
-        before:opacity-10 before:duration-700 hover:shadow-green-500 hover:before:-translate-x-40">
-            <span relative="relative z-10">Get Started</span>
-        </button>
-        </div> */}
 
       <div className='game-display'>
         <h1 className='text-center' id='regFont'>
