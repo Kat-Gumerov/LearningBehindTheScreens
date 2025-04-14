@@ -34,16 +34,16 @@ const Page = () => {
     <div>
       <div className='flex items-center'>
         {/* back button */}
-        <Link href={'..'}>
+        <Link href={'/play'}>
           <button>
             <img src='/images/arrow.png' alt='Back' width='100' height='100' />
           </button>
         </Link>
-        <div className="flex-1 text-center">
-          <h1 className="title">Word Scramble</h1>
+        <div className='flex-1 text-center'>
+          <h1 className='title'>Word Scramble</h1>
         </div>
       </div>
-      
+
       <div>
         <div className='speed-buttons flex '>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
@@ -71,7 +71,6 @@ const Page = () => {
 
       {/* displaying Game View and Code View */}
       <div className='dualscreen-container'>
-
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}

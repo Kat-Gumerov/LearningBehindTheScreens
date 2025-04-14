@@ -1,85 +1,86 @@
-body{
-    background-color: #57BEE7;
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-    margin: 0;
+body {
+  background-color: #57bee7;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  margin: 0;
 }
 
-.title{
-    font-size: 55px;
-    font-family: Dogica;
-    color: #FCC067;
-    -webkit-text-stroke: #A4752F;
-    -webkit-text-stroke-width: 2px;
-    text-align: center;
-    text-shadow: -2px 6px 6px rgba(6,28,139,0.6);
+.title {
+  font-size: 55px;
+  font-family: Dogica;
+  color: #fcc067;
+  -webkit-text-stroke: #a4752f;
+  -webkit-text-stroke-width: 2px;
+  text-align: center;
+  text-shadow: -2px 6px 6px rgba(6, 28, 139, 0.6);
 }
 
-.codeview{
-    background-color: #2D265F;
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
+.codeview {
+  background-color: #2d265f;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
 
-    min-width: 80vh;
+  min-width: 80vh;
 }
 
-.gameview{
-    background-color: #D8F4FF;
-    padding: 25px 50px;
-    font-family: DaysOne;
-    text-align: center;
-    justify-content: center;
-    
-    min-width: 20vh;
-    max-width: 55vh;
+.gameview {
+  background-color: #d8f4ff;
+  padding: 25px 50px;
+  font-family: DaysOne;
+  text-align: center;
+  justify-content: center;
+
+  min-width: 20vh;
+  max-width: 55vh;
 }
 
-.gameview, .codeview{
-    padding: 20px 50px;
-    overflow-y: auto;
-    margin-bottom: 10%;
+.gameview,
+.codeview {
+  padding: 20px 50px;
+  overflow-y: auto;
+  margin-bottom: 10%;
 
-    height: 60vh;
-    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    border-width: 5px;
-    border-color: #498BC0;
+  height: 60vh;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #498bc0;
 }
 
-.dualscreen-container{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    gap: 20px;
+.dualscreen-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  gap: 20px;
 }
 
-/* .ai-container{
-    /* background-color: #D8F4FF;
-    padding: 25px 50px;
-    font-family: DaysOne;
-    max-width: 80%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 10px;
-    gap: 20px;
-    color: #434993; 
-} */
-
-.gameview-text{
-    text-align: center;
-    align-items: center;
-    margin-bottom: 12px;
+.ai-container {
+  background-color: #d8f4ff;
+  padding: 25px 50px;
+  font-family: DaysOne;
+  max-width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px;
+  gap: 20px;
+  color: #434993;
 }
 
-.code-speed{
-    color: white;
+.gameview-text {
+  text-align: center;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.speed-buttons{
-    margin-left: 20px;
-    font-family: DaysOne;
+.code-speed {
+  color: white;
+}
+
+.speed-buttons {
+  margin-left: 20px;
+  font-family: DaysOne;
 }
