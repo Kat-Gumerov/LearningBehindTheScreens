@@ -53,8 +53,12 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   return (
     <div className='gameview text-center'>
       {/* <h1 className='text-xl font-bold '>Word Scramble Game</h1> */}
-      <h1 className='text-s text-blue-700 mt-20 mb-20'>Try to unscramble the word below and type your guess in the box!</h1>
-      <h2 className='text-2xl my-4 text-emerald-500'>Scrambled Word: {scrambledWord}</h2>
+      <h1 className='text-s text-blue-700 mt-20 mb-20'>
+        Try to unscramble the word below and type your guess in the box!
+      </h1>
+      <h2 className='text-2xl my-4 text-emerald-500'>
+        Scrambled Word: {scrambledWord}
+      </h2>
 
       <input
         type='text'

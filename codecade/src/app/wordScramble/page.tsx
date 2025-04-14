@@ -14,6 +14,18 @@ const Page = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const word_scramble_code = [
+    'def scramble(original_word, scrambled_word):',
+    '    while tries > 0:',
+    '        guess = input(f"Guess the word: {scrambled_word}\\n")',
+    '        if guess.lower() == original_word:',
+    '            return "Correct!"',
+    '        else:',
+    '            tries -= 1',
+    '            return "Wrong. {tries} tries left."',
+    '    return "You lost! The word was {original_word}."',
+  ]
+
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
 
@@ -34,6 +46,22 @@ const Page = () => {
     setCodeSpeed((prevSpeed) => prevSpeed + 200)
   }
 
+  const handleExplain = async (index: number) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const result = await getExplanation(
+        word_scramble_code[index],
+        'word scramble game'
+      )
+      setExplanation(result)
+    } catch (error) {
+      setError('An error occurred while fetching the explanation.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div>
       <div className='flex items-center'>
@@ -49,7 +77,7 @@ const Page = () => {
       </div>
 
       <div>
-        <div className='speed-buttons flex '>
+        <div className='speed-buttons flex'>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
           <div className='flex flex-col ml-2'>
             {' '}
@@ -79,14 +107,18 @@ const Page = () => {
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
         ></GameView>
-        <CodeView currentLine={currentLine}></CodeView>
+        <CodeView
+          currentLine={currentLine}
+          code={word_scramble_code}
+          onUserClick={handleExplain}
+        ></CodeView>
       </div>
       <div className='ai-container'>
         {error && <p className='text-red-600'>{error}</p>}
         {explanation && (
           <div className='mt-4'>
-            <h2 className='text-lg font-bold'>Explanation:</h2>
-            <p>{explanation}</p>
+            {/* <h2 className='text-lg font-bold'>Explanation:</h2> */}
+            <p>Explanation: {explanation}</p>
           </div>
         )}
       </div>
