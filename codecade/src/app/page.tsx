@@ -9,7 +9,7 @@ export default function Home() {
       <Navbar />
 
       <div className='flex-container justify-evenly mt-7 w-80 m-8 mb-8'>
-        <div className='description mt-7 flex'>
+        <div className='description mt-7 w-100 flex'>
           <h1 className='mt-20'>See the Code</h1>
           <h1>Play the Games</h1>
           <h1>Learn the Magic</h1>
@@ -19,7 +19,7 @@ export default function Home() {
           <img
             src='../images/landing-photo.png'
             alt='Boy playing video games'
-            className='mt-9'
+            className='mt-7'
           ></img>
         </div>
       </div>
