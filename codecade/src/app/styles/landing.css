@@ -1,0 +1,84 @@
+body {
+  background-color: #57bee7;
+}
+
+.description {
+  font-family: DaysOne;
+  color: #1d268c;
+  font-size: 60px;
+  display: inline-block;
+}
+
+.start-button {
+  background-color: #06d6a0;
+  color: #232b7c;
+  padding: 1% 6%;
+  border-radius: 10px;
+  border: solid 3px;
+  font-family: Dogica;
+  font-size: 1.875em;
+  margin-top: 4%;
+  border-width: 5px;
+  margin-bottom: 4%;
+  transition: all 0.2s ease-in-out;
+}
+
+.start-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+    font-size: 2.2em;
+  }
+
+.flex-container {
+  display: flex;
+  margin: auto;
+  width: 60%;
+}
+
+.game-display {
+  background-color: white;
+  background-size: over;
+  padding-bottom: 50px;
+}
+
+.gameboxes {
+  display: flex;
+  justify-content: space-between;
+}
+
+#box1 {
+  border: solid #cf25d5;
+  background-color: #d9a6db;
+}
+
+#box2 {
+  border: solid #dd1d1d;
+  background-color: #f08b8b;
+}
+
+#box3 {
+  border: solid 10px #ecda0d;
+  background-color: #f1e66f;
+}
+
+#box1,
+#box2,
+#box3 {
+  display: flex;
+  border-width: 2px;
+  font-family: Dogica;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 30%;
+  font-size: 2em;
+  margin: auto;
+}
+
+#regFont {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-family: DaysOne;
+  color: #232b7c;
+  font-size: 1.875em;
+}

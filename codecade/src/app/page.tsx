@@ -1,34 +1,65 @@
 'use client'
 import Link from 'next/link'
-import './styles/home.css'
 import Navbar from './components/Navbar'
-import {BrowserRouter as Router} from 'react-router-dom';
+import './styles/landing.css'
 
 export default function Home() {
   return (
     <div>
+      <Navbar />
 
-      <Router>
-        <Navbar />
-      </Router>
-      {/*game menu*/}
-      <div className='text-center'>
-        <h1 id='select-title'>SELECT GAME</h1>
-        <br />
-        <ul className='game-select-list space-y-2'>
-          <Link href='/rockPaperScissors'>
-            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Rock Paper Scissors</li>
-          </Link>
-          <Link href='/hangman'>
-            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Hangman</li>
-          </Link>
-          <Link href='/wordScramble'>
-            <li className="game group transition-transform duration-200 ease-in-out transform hover:scale-110 p-2 rounded-lg">Word Scramble</li>
-          </Link>
-        </ul>
-        {/* <button className='start-button'>START</button> */}
+      <div className='flex-container justify-evenly mt-7 w-80 m-8 mb-8'>
+        <div className='description mt-7 w-100 flex'>
+          <h1 className='mt-20'>See the Code</h1>
+          <h1>Play the Games</h1>
+          <h1>Learn the Magic</h1>
+        </div>
+
+        <div className='mt-7'>
+          <img
+            src='../images/landing-photo.png'
+            alt='Boy playing video games'
+            className='mt-7'
+          ></img>
+        </div>
       </div>
-    </div> 
 
+      <div className='text-center mb-3'>
+        <Link href='play'>
+          <button className='start-button'>Get Started</button>
+        </Link>
+      </div>
+
+      <div className='game-display'>
+        <h1 className='text-center' id='regFont'>
+          Learn the logic of code by playing classic games!
+        </h1>
+
+        <div className='gameboxes'>
+          <div id='box1'>
+            <img
+              src='../images/pencil.png'
+              alt='pencil'
+              className='size-20 ml-5'
+            ></img>
+            <p className='gamename'>Word Scramble</p>
+          </div>
+
+          <div id='box2'>
+            <img src='../images/man.png' alt='man' className='size-20'></img>
+            <p>Hangman</p>
+          </div>
+
+          <div id='box3'>
+            <img
+              src='../images/scissors.png'
+              alt='scissors'
+              className='size-20'
+            ></img>
+            <p>Rock Paper Scissors</p>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

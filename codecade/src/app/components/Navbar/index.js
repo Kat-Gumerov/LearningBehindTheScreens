@@ -1,5 +1,8 @@
 'use client'
+
 import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   Nav,
   NavLink,
@@ -10,27 +13,43 @@ import {
 } from './NavbarElements'
 
 const Navbar = () => {
+  const pathname = usePathname()
+
+  
+
   return (
-    <>
-      <Nav>
-        <NavLink to='/'>
+    <Nav>
+      <Link href='/' legacyBehavior passHref>
+        <NavLink className={pathname === '/' ? 'active' : ''}>
           <h1 id='logo-text'>CodeCade</h1>
         </NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to='/home' activestyle='true'>
+      </Link>
+
+      <Bars />
+
+      <NavMenu>
+        <Link href='/' legacyBehavior passHref>
+          <NavLink className={pathname === '/' ? 'active' : ''}>
             home
           </NavLink>
-          <NavLink to='/about' activestyle='true'>
+        </Link>
+        <Link href='/about' legacyBehavior passHref>
+          <NavLink className={pathname === '/about' ? 'active' : ''}>
             about
           </NavLink>
-          <NavLink to='/contact' activestyle='true'>
+        </Link>
+        <Link href='/contact' legacyBehavior passHref>
+          <NavLink className={pathname === '/contact' ? 'active' : ''}>
             contact
           </NavLink>
-          <NavBtnLink to='/play'>PLAY</NavBtnLink>
-        </NavMenu>
-      </Nav>
-    </>
+        </Link>
+        <Link href='/play' legacyBehavior passHref>
+          <NavBtnLink className={pathname === '/play' ? 'active' : ''}>
+            PLAY
+          </NavBtnLink>
+        </Link>
+      </NavMenu>
+    </Nav>
   )
 }
 

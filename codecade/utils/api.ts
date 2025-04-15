@@ -1,7 +1,7 @@
 // utils/api.ts
 
 export async function getExplanation(code: string, gameType: string) {
-  console.log(JSON.stringify({ snippet: code }))
+  // console.log(JSON.stringify({ snippet: code }))
   try {
     // Replace with your Python API URL (this example assumes you're running the backend on localhost)
     const response = await fetch('http://localhost:8000/api/explain-code/', {
@@ -19,6 +19,7 @@ export async function getExplanation(code: string, gameType: string) {
 
     // Parse the JSON response from the backend
     const data = await response.json()
+    console.log(data.explanation)
     return data.explanation // Return the explanation from the API response
   } catch (error) {
     console.error('Error fetching explanation:', error)

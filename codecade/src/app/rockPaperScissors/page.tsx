@@ -5,11 +5,30 @@ import { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
+import { getExplanation } from '../../../utils/api'
 
 const page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
+  const [explanation, setExplanation] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const rock_paper_scissor_code = [
+    'def play_round(player_choice):',
+    '    choices = ["rock", "paper", "scissors"]',
+    '    computer_choice = random.choice(choices)',
+    '    if player_choice == computer_choice:',
+    '        return "It\'s a tie!"',
+    '    if (player_choice == "rock" and computer_choice == "scissors"):',
+    '        return "You win!"',
+    '    if (player_choice == "scissors" and computer_choice == "paper"):',
+    '        return "You win!"',
+    '    if (player_choice == "paper" and computer_choice == "rock"):',
+    '        return "You win!"',
+    '    return "You lose!"',
+  ]
 
   /*
    * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
@@ -54,20 +73,36 @@ const page = () => {
     setCodeSpeed((prevSpeed) => prevSpeed + 200)
   }
 
+  const handleExplain = async (index: number) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const result = await getExplanation(
+        rock_paper_scissor_code[index],
+        'rock paper scissors game'
+      )
+      setExplanation(result)
+    } catch (error) {
+      setError('An error occurred while fetching the explanation.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div>
       <div className='flex items-center'>
         {/* back button */}
-        <Link href={'..'}>
+        <Link href={'/play'}>
           <button>
             <img src='/images/arrow.png' alt='Back' width='100' height='100' />
           </button>
         </Link>
-        <div className="flex-1 text-center">
-          <h1 className="title">Rock Paper Scissors</h1>
+        <div className='flex-1 text-center'>
+          <h1 className='title'>Rock Paper Scissors</h1>
         </div>
       </div>
-      
+
       <div>
         <div className='speed-buttons flex '>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
@@ -95,12 +130,24 @@ const page = () => {
 
       {/* displaying Game View and Code View */}
       <div className='dualscreen-container'>
-
         <GameView
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
         ></GameView>
-        <CodeView currentLine={currentLine}></CodeView>
+        <CodeView
+          currentLine={currentLine}
+          code={rock_paper_scissor_code}
+          onUserClick={handleExplain}
+        ></CodeView>
+      </div>
+      <div className='ai-container'>
+        {error && <p className='text-red-600'>{error}</p>}
+        {explanation && (
+          <div className='mt-4'>
+            {/* <h2 className='text-lg font-bold'>Explanation:</h2> */}
+            <p>Explanation: {explanation}</p>
+          </div>
+        )}
       </div>
     </div>
   )
