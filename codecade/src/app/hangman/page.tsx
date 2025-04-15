@@ -79,10 +79,7 @@ const page = () => {
     setLoading(true)
     setError(null)
     try {
-      const result = await getExplanation(
-        hangman_code[index],
-        'word scramble game'
-      )
+      const result = await getExplanation(hangman_code[index], 'hangman game')
       setExplanation(result)
     } catch (error) {
       setError('An error occurred while fetching the explanation.')

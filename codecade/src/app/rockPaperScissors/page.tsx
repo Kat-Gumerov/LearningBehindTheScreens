@@ -79,7 +79,7 @@ const page = () => {
     try {
       const result = await getExplanation(
         rock_paper_scissor_code[index],
-        'word scramble game'
+        'rock paper scissors game'
       )
       setExplanation(result)
     } catch (error) {

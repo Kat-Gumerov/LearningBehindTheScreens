@@ -12,19 +12,6 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
   const [loading, setLoading] = useState(false) // To manage loading state
   const [error, setError] = useState<string | null>(null) // To manage any error
 
-  const handleExplain = async (index: number) => {
-    setLoading(true)
-    setError(null)
-    try {
-      const result = await getExplanation(code[index], 'rock paper scissors') // Get the explanation from the backend
-      setExplanation(result) // Set the explanation state
-    } catch (error) {
-      setError('An error occurred while fetching the explanation.')
-    } finally {
-      setLoading(false) // End the loading state
-    }
-  }
-
   // Display code line by line from array
   let codeLines = code.map((line, index) => {
     return (
@@ -34,7 +21,7 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
         </h3>
         <button
           onClick={() => {
-            handleExplain(index)
+            onUserClick(index)
           }}
           disabled={loading}
         >

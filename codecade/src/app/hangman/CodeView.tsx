@@ -19,7 +19,7 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
         <h3 className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
           {index}: {line}
         </h3>
-        <button onClick={() => handleExplain(index)} disabled={loading}>
+        <button onClick={() => onUserClick(index)} disabled={loading}>
           {loading ? 'Explaining...' : ''}
           <img
             src='images/challenge.png'
@@ -30,19 +30,6 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
       </div>
     )
   })
-
-  const handleExplain = async (index: number) => {
-    setLoading(true)
-    setError(null)
-    try {
-      const result = await getExplanation(code[index], 'rock paper scissors') // Get the explanation from the backend
-      setExplanation(result) // Set the explanation state
-    } catch (error) {
-      setError('An error occurred while fetching the explanation.')
-    } finally {
-      setLoading(false) // End the loading state
-    }
-  }
 
   return (
     <div>
