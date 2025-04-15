@@ -141,19 +141,10 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   ))
 
   // arrays of code lines and their orders based on each outcome of the game
-  const playerGuessCorrect = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-  ]
-  const playerGuessIncorrect = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17,
-  ]
-  const playerWins = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ]
-  const playerLoses = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
-  ]
+  const playerGuessCorrect = [1, 2, 3, 7, 8, 9]
+  const playerGuessIncorrect = [1, 2, 3, 7, 10, 11]
+  const playerWins = [1, 2, 3, 4, 5, 6]
+  const playerLoses = [1, 12, 13]
 
   let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
     <pre key={index}>
@@ -168,10 +159,10 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     .join(' ')
 
   return (
-    <div className='border-4 border-solid border-black p-4 w-[500px] flex flex-col items-center '>
+    <div className='gameview'>
       <h1>{gameOver ? 'Game Over' : ''}</h1>
       <h1>{playerWon ? 'You Win!' : ''}</h1>
-      <div className='justify-self-center'>{renderHangman}</div>
+      <div className='justify-items-center'>{renderHangman}</div>
       <div>{generateDisplayWord}</div>
       <div>{letterButtons}</div>
     </div>

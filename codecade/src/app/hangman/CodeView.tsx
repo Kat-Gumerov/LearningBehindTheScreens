@@ -1,49 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { getExplanation } from '../../../utils/api'
 
 interface CodeViewProps {
   currentLine: number
+  code: string[]
+  onUserClick: (index: number) => Promise<void>
 }
 
-const CodeView = ({ currentLine }: CodeViewProps) => {
-  const hangman_code = [
-    'def play_round(guess, random_word):',
-    'word = random_word',
-    '# Now, we need to show the player how many letters are in the word.',
-    "# We'll use underscores to represent the hidden letters.",
-    'guessed_letters = ["_"] * len(word)',
-    'print(" ".join(guessed_letters))',
-    "# We'll give the player 6 tries to guess the word.",
-    'tries = 6',
-    "# Now, we'll start the game loop.",
-    'while tries > 0 and "_" in guessed_letters:',
-    '    # Check if the letter is in the word.',
-    '    if guess in word:',
-    '        # If it is, replace the underscores with the guessed letter.',
-    '        for i in range(len(word)):',
-    '            if word[i] == guess:',
-    '                guessed_letters[i] = guess',
-    '    else:',
-    "        # If it's not, take away a try.",
-    '        tries -= 1',
-    '# Check if the player won or lost.',
-    'if "_" not in guessed_letters:',
-    '    print("You win!")',
-    'else:',
-    '    print(f"Game Over")',
-  ]
+const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
+  const [explanation, setExplanation] = useState('') // The explanation from the AI model
+  const [loading, setLoading] = useState(false) // To manage loading state
+  const [error, setError] = useState<string | null>(null) // To manage any error
 
   // Display code line by line from array
-  let codeLines = hangman_code.map((line, index) => {
+  let codeLines = code.map((line, index) => {
     return (
-      <h3 key={index} className={index === currentLine ? 'bg-yellow-400' : ''}>
-        {index}: {line}
-      </h3>
+      <div key={index} className='flex items-center gap-2'>
+        <h3 className={index === currentLine ? 'bg-yellow-300 text-black' : ''}>
+          {index}: {line}
+        </h3>
+        <button onClick={() => onUserClick(index)} disabled={loading}>
+          {loading ? 'Explaining...' : ''}
+          <img
+            src='images/challenge.png'
+            alt='explain icon'
+            className='w-7 h-7'
+          ></img>
+        </button>
+      </div>
     )
   })
 
   return (
     <div>
-      <div className='border-4 border-solid border-black p-4'>{codeLines}</div>
+      <div className='codeview w-1/2 flex flex-col justify-start items-start'>
+        {codeLines}
+      </div>
     </div>
   )
 }
