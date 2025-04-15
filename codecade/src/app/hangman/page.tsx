@@ -5,11 +5,32 @@ import { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
+import { getExplanation } from '../../../utils/api'
 
 const page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
+  const [explanation, setExplanation] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const hangman_code = [
+    'def check_guess(word, tries, guesses):',
+    'if tries > 0:',
+    '    display = [l if l in guesses else "_" for l in word]',
+    '    print(" ".join(display))',
+    '    if "_" not in display:',
+    '        print("You win!")',
+    '        break',
+    '    guess = input()',
+    '    if guess in word:',
+    '        guesses.append(guess)',
+    '    else:',
+    '        tries -= 1',
+    'else if tries == 0:',
+    '    print("Game Over")',
+  ]
 
   /*
    * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
@@ -52,6 +73,22 @@ const page = () => {
 
   const slowDown = () => {
     setCodeSpeed((prevSpeed) => prevSpeed + 200)
+  }
+
+  const handleExplain = async (index: number) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const result = await getExplanation(
+        hangman_code[index],
+        'word scramble game'
+      )
+      setExplanation(result)
+    } catch (error) {
+      setError('An error occurred while fetching the explanation.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -99,7 +136,20 @@ const page = () => {
           onUserClick={handleUserClick}
           buttonDisabled={buttonDisabled}
         ></GameView>
-        <CodeView currentLine={currentLine}></CodeView>
+        <CodeView
+          currentLine={currentLine}
+          code={hangman_code}
+          onUserClick={handleExplain}
+        ></CodeView>
+      </div>
+      <div className='ai-container'>
+        {error && <p className='text-red-600'>{error}</p>}
+        {explanation && (
+          <div className='mt-4'>
+            {/* <h2 className='text-lg font-bold'>Explanation:</h2> */}
+            <p>Explanation: {explanation}</p>
+          </div>
+        )}
       </div>
     </div>
   )

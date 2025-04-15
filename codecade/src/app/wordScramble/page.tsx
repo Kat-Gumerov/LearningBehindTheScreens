@@ -15,9 +15,9 @@ const Page = () => {
   const [error, setError] = useState<string | null>(null)
 
   const word_scramble_code = [
-    'def scramble(original_word, scrambled_word):',
+    'def scramble(original_word, scrambled_word, tries):',
     '    while tries > 0:',
-    '        guess = input(f"Guess the word: {scrambled_word}\\n")',
+    '        guess = input()',
     '        if guess.lower() == original_word:',
     '            return "Correct!"',
     '        else:',
