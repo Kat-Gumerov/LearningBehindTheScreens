@@ -30,6 +30,7 @@ const page = () => {
     '        tries -= 1',
     'else if tries == 0:',
     '    print("Game Over")',
+    '    print("The word was {word}")',
   ]
 
   /*
@@ -140,13 +141,15 @@ const page = () => {
         ></CodeView>
       </div>
       <div className='ai-container'>
-        {error && <p className='text-red-600'>{error}</p>}
-        {explanation && (
+        {loading ? (
+          <p>Explaining...</p>
+        ) : error ? (
+          <p className='text-red-600'>{error}</p>
+        ) : explanation ? (
           <div className='mt-4'>
-            {/* <h2 className='text-lg font-bold'>Explanation:</h2> */}
             <p>Explanation: {explanation}</p>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   )

@@ -15,13 +15,12 @@ import {
 const Navbar = () => {
   const pathname = usePathname()
 
-  
-
   return (
     <Nav>
       <Link href='/' legacyBehavior passHref>
         <NavLink className={pathname === '/' ? 'active' : ''}>
-          <h1 id='logo-text'>CodeCade</h1>
+          <img src='/images/Icon.png' className='h-32'></img>
+          {/* <h1 id='logo-text'>CodeCade</h1> */}
         </NavLink>
       </Link>
 
@@ -29,9 +28,7 @@ const Navbar = () => {
 
       <NavMenu>
         <Link href='/' legacyBehavior passHref>
-          <NavLink className={pathname === '/' ? 'active' : ''}>
-            home
-          </NavLink>
+          <NavLink className={pathname === '/' ? 'active' : ''}>home</NavLink>
         </Link>
         <Link href='/about' legacyBehavior passHref>
           <NavLink className={pathname === '/about' ? 'active' : ''}>

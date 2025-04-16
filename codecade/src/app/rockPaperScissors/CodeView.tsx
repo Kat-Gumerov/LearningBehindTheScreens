@@ -25,7 +25,7 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
           }}
           disabled={loading}
         >
-          {loading ? 'Explaining...' : ''}
+          {/* {loading ? 'Explaining...' : ''} */}
           <img
             src='images/challenge.png'
             alt='explain icon'

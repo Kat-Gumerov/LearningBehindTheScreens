@@ -4,7 +4,7 @@ export async function getExplanation(code: string, gameType: string) {
   // console.log(JSON.stringify({ snippet: code }))
   try {
     // Replace with your Python API URL (this example assumes you're running the backend on localhost)
-    const response = await fetch('http://learningbehindthescreens-production.up.railway.app/api/explain-code/', {
+    const response = await fetch('http://localhost:8000/api/explain-code/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

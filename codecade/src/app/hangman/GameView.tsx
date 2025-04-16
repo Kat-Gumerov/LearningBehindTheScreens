@@ -89,7 +89,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   ]
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
   const words = ['code', 'web', 'chip', 'byte', 'file']
 
   useEffect(() => {
@@ -122,8 +121,18 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     }
 
     let newGuess = [...guessedLetters, players_guess]
-
     setGuessedLetters(newGuess)
+  }
+
+  const resetGame = () => {
+    const randomIndex = Math.floor(Math.random() * words.length)
+    setSecretWord(words[randomIndex])
+    setGuessedLetters([])
+    setIncorrectGuesses([])
+    setCorrectGuesses([])
+    setNumGuesses(0)
+    setGameOver(false)
+    setPlayerWon(false)
   }
 
   const letterButtons = alphabet.map((letter, index) => (
@@ -140,11 +149,10 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     </button>
   ))
 
-  // arrays of code lines and their orders based on each outcome of the game
   const playerGuessCorrect = [1, 2, 3, 7, 8, 9]
   const playerGuessIncorrect = [1, 2, 3, 7, 10, 11]
   const playerWins = [1, 2, 3, 4, 5, 6]
-  const playerLoses = [1, 12, 13]
+  const playerLoses = [1, 12, 13, 14]
 
   let renderHangman = hangmanParts[numGuesses].lines.map((line, index) => (
     <pre key={index}>
@@ -160,8 +168,24 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   return (
     <div className='gameview'>
-      <h1>{gameOver ? 'Game Over' : ''}</h1>
+      <h1>
+        {gameOver ? (
+          <>
+            Game Over <br /> The word was {secretWord}
+          </>
+        ) : (
+          ''
+        )}
+      </h1>
       <h1>{playerWon ? 'You Win!' : ''}</h1>
+      {(gameOver || playerWon) && (
+        <button
+          onClick={resetGame}
+          className='mt-4 px-4 py-2 bg-green-200 hover:bg-green-300 rounded'
+        >
+          Play Again
+        </button>
+      )}
       <div className='justify-items-center'>{renderHangman}</div>
       <div>{generateDisplayWord}</div>
       <div>{letterButtons}</div>
