@@ -38,8 +38,8 @@ const Navbar = () => {
             about
           </NavLink>
         </Link>
-        <Link href='/contact' legacyBehavior passHref>
-          <NavLink className={pathname === '/contact' ? 'active' : ''}>
+        <Link href='/Contact' legacyBehavior passHref>
+          <NavLink className={pathname === '/Contact' ? 'active' : ''}>
             contact
           </NavLink>
         </Link>

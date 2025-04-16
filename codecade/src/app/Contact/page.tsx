@@ -1,8 +1,7 @@
 "use client";
-import React from 'react';
-import '../styles/contact.css';
-import emailjs from '@emailjs/browser';
-import Link from 'next/link'
+import React from 'react'
+import '../styles/contact.css'
+import emailjs from '@emailjs/browser'
 import Navbar from '../components/Navbar'
 
 const SERVICE_ID = "service_647gs9b";
