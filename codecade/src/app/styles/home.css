@@ -27,19 +27,19 @@ body {
   font-family: Dogica;
 }
 
-.start-button {
+/* .start-button {
   color: white;
-  background-color: #e71c3e;
-  border-color: #831225;
+  background-color: #fdc066;
+  border-color: #fdc066;
   border-radius: 12px;
   border: solid 3px;
   padding: 15px 40px;
   margin: 4px 2px;
   cursor: pointer;
   font-size: 20px;
-  box-shadow: 4px 4px 0px #831225;
+  box-shadow: 4px 4px 0px #fdc066;
   font-family: Dogica;
-}
+} */
 
 .select-screen {
   margin: auto;

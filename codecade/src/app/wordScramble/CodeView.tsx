@@ -19,7 +19,7 @@ const CodeView = ({ currentLine, code, onUserClick }: CodeViewProps) => {
           {index}: {line}
         </h3>
         <button onClick={() => onUserClick(index)} disabled={loading}>
-          {loading ? 'Explaining...' : ''}
+          {/* {loading ? 'Explaining...' : ''} */}
           <img
             src='images/challenge.png'
             alt='explain icon'
