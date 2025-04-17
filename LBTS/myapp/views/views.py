@@ -47,6 +47,7 @@ def explainCode(request):
 
             return JsonResponse({"explanation": explanation})
         except Exception as e:
+            print("Error: ", e)
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid request method."}, status=405)
 
