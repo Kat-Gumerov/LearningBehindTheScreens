@@ -57,7 +57,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware", 
-    
 ]
 
 ROOT_URLCONF = 'LBTS.urls'
@@ -115,7 +114,6 @@ CORS_ALLOWED_ORIGINS = [
      "http://localhost:3000", # use for local development
     "https://learning-behind-the-screens-ppm69z2me.vercel.app",
     "https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app",
-    'https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app/',
 ]
 
 
