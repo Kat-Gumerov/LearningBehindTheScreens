@@ -8,8 +8,11 @@ export async function getExplanation(code: string, gameType: string) {
       "https://learningbehindthescreens-production.up.railway.app/api/explain-code/",
       {
         method: "POST",
+        mode: "cors",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({ snippet: code, game: gameType }), // send the code as JSON
       }
