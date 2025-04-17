@@ -112,7 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000" # use for production when ready
+    "http://localhost:3000," # use for production when ready
+    "https://learning-behind-the-screens-ppm69z2me.vercel.app/"
 ]
 
 
