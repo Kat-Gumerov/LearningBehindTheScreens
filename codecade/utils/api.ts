@@ -15,6 +15,8 @@ export async function getExplanation(code: string, gameType: string) {
       }
     );
 
+    console.log("response: ", response);
+
     // Check for a successful response
     if (!response.ok) {
       throw new Error("Failed to get explanation");
