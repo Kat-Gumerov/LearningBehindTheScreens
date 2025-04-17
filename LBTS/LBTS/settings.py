@@ -116,6 +116,20 @@ CORS_ALLOWED_ORIGINS = [
     "https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app",
 ]
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+        },
+    }
+}
+
 
 
 

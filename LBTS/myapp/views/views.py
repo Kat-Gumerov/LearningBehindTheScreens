@@ -4,6 +4,9 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
+import logging
+
+logger = logging.getLogger('django')
 
 # Homepage View
 def home(request):
@@ -11,6 +14,7 @@ def home(request):
 
 @csrf_exempt
 def explainCode(request):
+    logger.info("hello")
     if request.method == 'POST':
         try:
            
@@ -47,7 +51,7 @@ def explainCode(request):
 
             return JsonResponse({"explanation": explanation})
         except Exception as e:
-            print("Error: ", e)
+            logger.info("error: ", e)
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid request method."}, status=405)
 
