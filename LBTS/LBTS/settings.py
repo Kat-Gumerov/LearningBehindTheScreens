@@ -114,14 +114,14 @@ ALLOWED_HOSTS=["*"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # use for local development
-    "https://www.codecade.fun"
+    "https://www.codecade.fun",
     "https://learning-behind-the-screens-ppm69z2me.vercel.app",
     "https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app",
 ]
 
 CSRF_TRUSTED_0RIGINS=[
     "http://localhost:3000", # use for local development
-    "https://www.codecade.fun"
+    "https://www.codecade.fun",
     "https://learning-behind-the-screens-ppm69z2me.vercel.app",
     "https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app",
 ]
