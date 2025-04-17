@@ -8,12 +8,13 @@ import GameView from './GameView'
 import { getExplanation } from '../../../utils/api'
 
 const page = () => {
-  const [currentLine, setCurrentLine] = useState(0)
+  const [currentLine, setCurrentLine] = useState<number | null>(null)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
   const [explanation, setExplanation] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [completedLines, setCompletedLines] = useState<number[]>([])
 
   const rock_paper_scissor_code = [
     'def play_round(player_choice):',
@@ -21,13 +22,13 @@ const page = () => {
     '    computer_choice = random.choice(choices)',
     '    if player_choice == computer_choice:',
     '        return "It\'s a tie!"',
-    '    if (player_choice == "rock" and computer_choice == "scissors"):',
+    '    elif (player_choice == "rock" and computer_choice == "scissors"):',
     '        return "You win!"',
-    '    if (player_choice == "scissors" and computer_choice == "paper"):',
+    '    elif (player_choice == "scissors" and computer_choice == "paper"):',
     '        return "You win!"',
-    '    if (player_choice == "paper" and computer_choice == "rock"):',
+    '    elif (player_choice == "paper" and computer_choice == "rock"):',
     '        return "You win!"',
-    '    return "You lose!"',
+    '    else return "You lose!"',
   ]
 
   /*
@@ -35,9 +36,11 @@ const page = () => {
    */
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
+    setCompletedLines([])
 
     for (let i = 0; i < codeArray.length; i++) {
       setCurrentLine(codeArray[i])
+      setCompletedLines((prev) => [...prev, codeArray[i]])
       await new Promise((resolve) => setTimeout(resolve, codeSpeed))
     }
 
@@ -59,7 +62,7 @@ const page = () => {
     // setCurrentLine(13)
     // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
 
-    setCurrentLine(0)
+    setCurrentLine(null)
 
     setButtonDisabled(false)
   }
@@ -105,23 +108,25 @@ const page = () => {
 
       <div>
         <div className='speed-buttons flex '>
-          <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+          <h1 className='code-speed text-xl'>
+            Code Speed : {codeSpeed / 1000}s
+          </h1>
           <div className='flex flex-col ml-2'>
             {' '}
             <button onClick={speedUp} className='mb-1'>
               <img
                 src='/images/uparrow.png'
                 alt='Back'
-                width='16'
-                height='13'
+                width='18'
+                height='15'
               />
             </button>
             <button onClick={slowDown}>
               <img
                 src='/images/downarrow.png'
                 alt='Back'
-                width='16'
-                height='13'
+                width='18'
+                height='15'
               />
             </button>
           </div>
@@ -138,18 +143,23 @@ const page = () => {
           currentLine={currentLine}
           code={rock_paper_scissor_code}
           onUserClick={handleExplain}
+          completedLines={completedLines}
         ></CodeView>
       </div>
       <div className='ai-container'>
         {loading ? (
-          <p>Explaining...</p>
+          <p>Thinking...</p>
         ) : error ? (
           <p className='text-red-600'>{error}</p>
         ) : explanation ? (
-          <div className='mt-4'>
+          <div className=''>
             <p>Explanation: {explanation}</p>
           </div>
-        ) : null}
+        ) : (
+          <h1>
+            Click the light bulb icon to learn what the line of code does!
+          </h1>
+        )}
       </div>
     </div>
   )

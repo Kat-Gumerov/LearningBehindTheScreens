@@ -167,28 +167,31 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
     .join(' ')
 
   return (
-    <div className='gameview'>
-      <h1>
-        {gameOver ? (
-          <>
-            Game Over <br /> The word was {secretWord}
-          </>
-        ) : (
-          ''
+    <div>
+      <h1 className='font-bold instructions'>Play The Game</h1>
+      <div className='gameview'>
+        <h1>
+          {gameOver ? (
+            <>
+              Game Over <br /> The word was {secretWord}
+            </>
+          ) : (
+            ''
+          )}
+        </h1>
+        <h1>{playerWon ? 'You Win!' : ''}</h1>
+        {(gameOver || playerWon) && (
+          <button
+            onClick={resetGame}
+            className='mt-4 px-4 py-2 bg-green-200 hover:bg-green-300 rounded'
+          >
+            Play Again
+          </button>
         )}
-      </h1>
-      <h1>{playerWon ? 'You Win!' : ''}</h1>
-      {(gameOver || playerWon) && (
-        <button
-          onClick={resetGame}
-          className='mt-4 px-4 py-2 bg-green-200 hover:bg-green-300 rounded'
-        >
-          Play Again
-        </button>
-      )}
-      <div className='justify-items-center'>{renderHangman}</div>
-      <div>{generateDisplayWord}</div>
-      <div>{letterButtons}</div>
+        <div className='justify-items-center'>{renderHangman}</div>
+        <div>{generateDisplayWord}</div>
+        <div>{letterButtons}</div>
+      </div>
     </div>
   )
 }
