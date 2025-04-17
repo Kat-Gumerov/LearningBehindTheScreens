@@ -7,12 +7,13 @@ import GameView from './GameView'
 import { getExplanation } from '../../../utils/api'
 
 const Page = () => {
-  const [currentLine, setCurrentLine] = useState(0)
+  const [currentLine, setCurrentLine] = useState<number | null>(null)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
   const [explanation, setExplanation] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [completedLines, setCompletedLines] = useState<number[]>([])
 
   const word_scramble_code = [
     'def scramble(original_word, scrambled_word, tries):',
@@ -28,13 +29,15 @@ const Page = () => {
 
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
+    setCompletedLines([])
 
     for (let i = 0; i < codeArray.length; i++) {
       setCurrentLine(codeArray[i])
+      setCompletedLines((prev) => [...prev, codeArray[i]])
       await new Promise((resolve) => setTimeout(resolve, codeSpeed))
     }
 
-    setCurrentLine(0)
+    setCurrentLine(null)
     setButtonDisabled(false)
   }
 
@@ -77,24 +80,26 @@ const Page = () => {
       </div>
 
       <div>
-        <div className='speed-buttons flex'>
-          <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
+        <div className='speed-buttons flex '>
+          <h1 className='code-speed text-xl'>
+            Code Speed : {codeSpeed / 1000}s
+          </h1>
           <div className='flex flex-col ml-2'>
             {' '}
             <button onClick={speedUp} className='mb-1'>
               <img
                 src='/images/uparrow.png'
                 alt='Back'
-                width='16'
-                height='13'
+                width='18'
+                height='15'
               />
             </button>
             <button onClick={slowDown}>
               <img
                 src='/images/downarrow.png'
                 alt='Back'
-                width='16'
-                height='13'
+                width='18'
+                height='15'
               />
             </button>
           </div>
@@ -111,18 +116,23 @@ const Page = () => {
           currentLine={currentLine}
           code={word_scramble_code}
           onUserClick={handleExplain}
+          completedLines={completedLines}
         ></CodeView>
       </div>
       <div className='ai-container'>
         {loading ? (
-          <p>Explaining...</p>
+          <p>Thinking...</p>
         ) : error ? (
           <p className='text-red-600'>{error}</p>
         ) : explanation ? (
-          <div className='mt-4'>
+          <div className=''>
             <p>Explanation: {explanation}</p>
           </div>
-        ) : null}
+        ) : (
+          <h1>
+            Click the light bulb icon to learn what the line of code does!
+          </h1>
+        )}
       </div>
     </div>
   )

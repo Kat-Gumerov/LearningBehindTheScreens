@@ -14,9 +14,9 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const [triesLeft, setTriesLeft] = useState(3)
   const [result, setResult] = useState('')
 
-  const correct_guess = [1, 2, 3, 4]
-  const incorrect_guess = [1, 2, 3, 5, 6, 7]
-  const lost_game = [1, 2, 3, 5, 6, 7, 8]
+  const correct_guess = [0, 1, 2, 3, 4]
+  const incorrect_guess = [0, 1, 2, 3, 5, 6, 7]
+  const lost_game = [0, 1, 2, 3, 5, 6, 8]
 
   const scramble = (word: string): string => {
     return word
@@ -59,39 +59,42 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
   const gameOver = triesLeft === 0 || result.includes('guessed')
 
   return (
-    <div className='gameview text-center'>
-      <h1 className='text-s text-blue-700 mt-5 mb-5'>
-        Try to unscramble the word below and type your guess in the box!
-      </h1>
-      <h2 className='text-2xl my-4 text-emerald-500'>
-        Scrambled Word: {scrambledWord}
-      </h2>
+    <div>
+      <h1 className='font-bold instructions'>Play The Game</h1>
+      <div className='gameview text-center'>
+        <h1 className='text-s text-blue-700 mt-5 mb-5'>
+          Try to unscramble the word below and type your guess in the box!
+        </h1>
+        <h2 className='text-2xl my-4 text-emerald-500'>
+          Scrambled Word: {scrambledWord}
+        </h2>
 
-      <input
-        type='text'
-        value={userGuess}
-        onChange={(e) => setUserGuess(e.target.value)}
-        className='border p-2 rounded text-black'
-        disabled={gameOver}
-      />
-      <button
-        onClick={handleGuess}
-        disabled={gameOver || buttonDisabled}
-        className='ml-2 px-4 py-2 bg-slate-50 rounded'
-      >
-        Guess
-      </button>
-
-      <h3 className='mt-4'>{result}</h3>
-
-      {gameOver && (
+        <input
+          type='text'
+          value={userGuess}
+          onChange={(e) => setUserGuess(e.target.value)}
+          className='border p-2 rounded text-black'
+          disabled={gameOver}
+        />
         <button
-          onClick={startNewGame}
-          className='mt-4 px-4 py-2 bg-emerald-400 rounded'
+          onClick={handleGuess}
+          disabled={gameOver || buttonDisabled}
+          className='ml-2 px-4 py-2 bg-slate-50 rounded'
         >
-          Play Again
+          Guess
         </button>
-      )}
+
+        <h3 className='mt-4'>{result}</h3>
+
+        {gameOver && (
+          <button
+            onClick={startNewGame}
+            className='mt-4 px-4 py-2 bg-emerald-400 rounded'
+          >
+            Play Again
+          </button>
+        )}
+      </div>
     </div>
   )
 }
