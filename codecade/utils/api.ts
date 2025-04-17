@@ -8,7 +8,7 @@ export async function getExplanation(code: string, gameType: string) {
       "https://learningbehindthescreens-production.up.railway.app/api/explain-code/",
       {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",

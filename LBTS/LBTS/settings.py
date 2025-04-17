@@ -111,11 +111,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000", # use for local development
-#     "https://learning-behind-the-screens-ppm69z2me.vercel.app"
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+     "http://localhost:3000", # use for local development
+    "https://learning-behind-the-screens-ppm69z2me.vercel.app",
+    "https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app",
+    'https://learning-behind-the-scree-git-034218-katrinas-projects-9e7c2dca.vercel.app/',
+]
+
 
 
 
