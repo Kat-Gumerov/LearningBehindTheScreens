@@ -1,14 +1,52 @@
-body{
-    background-color: #57BEE7;
+/*this is the css page for the game select page*/
+body {
+  background-color: #57bee7;
 }
 
-.title{
-    font-size: large;
-    color: blue;
+.center-items {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.start-button{
-    color: white;
-    text-align: center;
-    border-radius: 20%;
+#select-title {
+  font-size: 60px;
+  color: #fcc067;
+  -webkit-text-stroke: #a4752f;
+  font-family: Dogica;
+  -webkit-text-stroke-width: 1.5px;
+  text-align: center;
+  margin-top: 10%;
+  text-shadow: -2px 6px 6px rgba(6, 28, 139, 0.6);
+}
+
+.game-select-list {
+  margin-bottom: 2%;
+  font-size: 32px;
+  color: #232b7c;
+  font-family: Dogica;
+}
+
+.start-button {
+  color: white;
+  background-color: #e71c3e;
+  border-color: #831225;
+  border-radius: 12px;
+  border: solid 3px;
+  padding: 15px 40px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 4px 4px 0px #831225;
+  font-family: Dogica;
+}
+
+.select-screen {
+  margin: auto;
+  margin-top: 5%;
+  width: 30%;
+}
+
+.codey {
+  min-width: 200px;
 }

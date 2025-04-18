@@ -1,13 +1,12 @@
 'use client'
 import '../styles/dualscreen.css'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import CodeView from './CodeView'
 import GameView from './GameView'
 import { getExplanation } from '../../../utils/api'
 
-const page = () => {
+const Page = () => {
   const [currentLine, setCurrentLine] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const [codeSpeed, setCodeSpeed] = useState(1000)
@@ -15,24 +14,18 @@ const page = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const rock_paper_scissor_code = [
-    'def play_round(player_choice):',
-    '    choices = ["rock", "paper", "scissors"]',
-    '    computer_choice = random.choice(choices)',
-    '    if player_choice == computer_choice:',
-    '        return "It\'s a tie!"',
-    '    if (player_choice == "rock" and computer_choice == "scissors"):',
-    '        return "You win!"',
-    '    if (player_choice == "scissors" and computer_choice == "paper"):',
-    '        return "You win!"',
-    '    if (player_choice == "paper" and computer_choice == "rock"):',
-    '        return "You win!"',
-    '    return "You lose!"',
+  const word_scramble_code = [
+    'def scramble(original_word, scrambled_word, tries):',
+    '    while tries > 0:',
+    '        guess = input()',
+    '        if guess.lower() == original_word:',
+    '            return "Correct!"',
+    '        else:',
+    '            tries -= 1',
+    '            return "Wrong. {tries} tries left."',
+    '    return "You lost! The word was {original_word}."',
   ]
 
-  /*
-   * Accepts and array of code line numbers, disables the buttons in the game, and highlights code lines in order.
-   */
   const handleUserClick = async (codeArray: number[]): Promise<void> => {
     setButtonDisabled(true)
 
@@ -41,30 +34,10 @@ const page = () => {
       await new Promise((resolve) => setTimeout(resolve, codeSpeed))
     }
 
-    // setCurrentLine(2)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(4)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(9)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(11)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
-    // setCurrentLine(13)
-    // await new Promise((resolve) => setTimeout(resolve, codeSpeed))
-
     setCurrentLine(0)
-
     setButtonDisabled(false)
   }
 
-  /* The following two functions change code replay speed */
   const speedUp = () => {
     setCodeSpeed((prevSpeed) => Math.max(200, prevSpeed - 200))
   }
@@ -78,8 +51,8 @@ const page = () => {
     setError(null)
     try {
       const result = await getExplanation(
-        rock_paper_scissor_code[index],
-        'rock paper scissors game'
+        word_scramble_code[index],
+        'word scramble game'
       )
       setExplanation(result)
     } catch (error) {
@@ -99,12 +72,12 @@ const page = () => {
           </button>
         </Link>
         <div className='flex-1 text-center'>
-          <h1 className='title'>Rock Paper Scissors</h1>
+          <h1 className='title'>Word Scramble</h1>
         </div>
       </div>
 
       <div>
-        <div className='speed-buttons flex '>
+        <div className='speed-buttons flex'>
           <h1 className='code-speed'>Code Speed : {codeSpeed / 1000}s</h1>
           <div className='flex flex-col ml-2'>
             {' '}
@@ -136,7 +109,7 @@ const page = () => {
         ></GameView>
         <CodeView
           currentLine={currentLine}
-          code={rock_paper_scissor_code}
+          code={word_scramble_code}
           onUserClick={handleExplain}
         ></CodeView>
       </div>
@@ -153,4 +126,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -15,19 +15,21 @@ const page = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const rock_paper_scissor_code = [
-    'def play_round(player_choice):',
-    '    choices = ["rock", "paper", "scissors"]',
-    '    computer_choice = random.choice(choices)',
-    '    if player_choice == computer_choice:',
-    '        return "It\'s a tie!"',
-    '    if (player_choice == "rock" and computer_choice == "scissors"):',
-    '        return "You win!"',
-    '    if (player_choice == "scissors" and computer_choice == "paper"):',
-    '        return "You win!"',
-    '    if (player_choice == "paper" and computer_choice == "rock"):',
-    '        return "You win!"',
-    '    return "You lose!"',
+  const hangman_code = [
+    'def check_guess(word, tries, guesses):',
+    'if tries > 0:',
+    '    display = [l if l in guesses else "_" for l in word]',
+    '    print(" ".join(display))',
+    '    if "_" not in display:',
+    '        print("You win!")',
+    '        break',
+    '    guess = input()',
+    '    if guess in word:',
+    '        guesses.append(guess)',
+    '    else:',
+    '        tries -= 1',
+    'else if tries == 0:',
+    '    print("Game Over")',
   ]
 
   /*
@@ -77,10 +79,7 @@ const page = () => {
     setLoading(true)
     setError(null)
     try {
-      const result = await getExplanation(
-        rock_paper_scissor_code[index],
-        'rock paper scissors game'
-      )
+      const result = await getExplanation(hangman_code[index], 'hangman game')
       setExplanation(result)
     } catch (error) {
       setError('An error occurred while fetching the explanation.')
@@ -99,7 +98,7 @@ const page = () => {
           </button>
         </Link>
         <div className='flex-1 text-center'>
-          <h1 className='title'>Rock Paper Scissors</h1>
+          <h1 className='title'>Hangman</h1>
         </div>
       </div>
 
@@ -136,7 +135,7 @@ const page = () => {
         ></GameView>
         <CodeView
           currentLine={currentLine}
-          code={rock_paper_scissor_code}
+          code={hangman_code}
           onUserClick={handleExplain}
         ></CodeView>
       </div>

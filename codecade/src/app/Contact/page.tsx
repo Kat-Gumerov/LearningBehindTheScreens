@@ -1,8 +1,9 @@
 "use client";
 import React from 'react';
 import '../styles/contact.css';
-import * as emailjs from '@emailjs/browser';
-
+import emailjs from '@emailjs/browser';
+import Link from 'next/link'
+import Navbar from '../components/Navbar'
 
 const SERVICE_ID = "service_647gs9b";
 const TEMPLATE_ID = "template_9286of6";
@@ -26,7 +27,9 @@ const Contact = () => {
 
   
   return (
+    <div><Navbar />
     <div className="flex h-screen">
+      
       {/* right half of page */}
     <div className="w-1/2 flex flex-col justify-start items-start h-screen px-32 py-72">
     <div className="header">Contact Us</div>
@@ -114,6 +117,7 @@ const Contact = () => {
     </form>
     </div>
 
+    </div>
     </div>
   )
 }

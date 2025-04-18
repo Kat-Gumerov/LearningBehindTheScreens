@@ -6,14 +6,14 @@ body{
 .header{
     font-size: 60px;
     font-weight: bold;
-    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-family: DaysOne;
     color: rgb(0, 0, 109)
 }
 
 .improve{
     font-size: 36px;
     font-weight: bold;
-    font-family: Verdana, sans-serif;
+    font-family: DaysOne;
     color: white
 }
 
@@ -21,14 +21,16 @@ body{
     font-size: 24px;
     color: rgb(0, 0, 109);
     text-decoration: underline;
+    font-family: DaysOne;
 }
 
 .emailForm{
     font-size: 36 px;
+    font-family: DaysOne;
 }
 
 .formName{
-    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-family: DaysOne;
     font-size: 60px;
     font-weight: bold;
     color: rgb(0, 0, 109)
