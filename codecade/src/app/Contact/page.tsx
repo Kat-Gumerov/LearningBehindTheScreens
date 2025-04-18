@@ -34,6 +34,7 @@ const Contact = () => {
     <p className="improve">Let us know how we can improve our site, questions, etc!</p>
 
     <p className="gmail"><a href="mailto:codecade@gmail.com">codecade@gmail.com</a></p>
+
     <div className = "Surveys">
     <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSebMap-KWLzFTyUwEiSXQZZlQP5JxQCAKDUDOAc7u6xWewwSQ/viewform?pli=1"
@@ -52,6 +53,7 @@ const Contact = () => {
       </a>
       <br></br>
       
+
 
     </div>
 
