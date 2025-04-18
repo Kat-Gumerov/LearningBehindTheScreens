@@ -37,6 +37,25 @@ const Contact = () => {
     <p className="improve">Let us know how we can improve our site, questions, etc!</p>
 
     <p className="gmail"><a href="mailto:codecade@gmail.com">codecade@gmail.com</a></p>
+    <div className = "Surveys">
+      <br></br>
+    <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSebMap-KWLzFTyUwEiSXQZZlQP5JxQCAKDUDOAc7u6xWewwSQ/viewform?pli=1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Fill out our Pre Survey Form!
+      </a>
+    <br></br>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScY5fL6YfcwUQwRDici41Bgtbe_fccSuEtrEHLDHJKNXMHvIA/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Fill out our Post Survey Form!
+      </a>
+      <br></br>
+      </div>
 
     </div>
 
