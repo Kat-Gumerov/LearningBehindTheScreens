@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import '../styles/contact.css';
-import emailjs from '@emailjs/browser';
+import * as emailjs from '@emailjs/browser';
+
 
 const SERVICE_ID = "service_647gs9b";
 const TEMPLATE_ID = "template_9286of6";
@@ -33,7 +34,8 @@ const Contact = () => {
     <p className="improve">Let us know how we can improve our site, questions, etc!</p>
 
     <p className="gmail"><a href="mailto:codecade@gmail.com">codecade@gmail.com</a></p>
-
+    <div className = "Surveys">
+      <br></br>
     <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSebMap-KWLzFTyUwEiSXQZZlQP5JxQCAKDUDOAc7u6xWewwSQ/viewform?pli=1"
         target="_blank"
@@ -50,6 +52,7 @@ const Contact = () => {
         Fill out our Post Survey Form!
       </a>
       <br></br>
+      </div>
 
     </div>
 
