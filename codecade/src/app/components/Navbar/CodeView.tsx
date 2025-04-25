@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../styles/dualscreen.css'
+import '../../styles/dualscreen.css'
 
 interface CodeViewProps {
   currentLine: number | null
@@ -14,10 +14,6 @@ const CodeView = ({
   onUserClick,
   completedLines,
 }: CodeViewProps) => {
-  const [explanation, setExplanation] = useState('') // The explanation from the AI model
-  const [loading, setLoading] = useState(false) // To manage loading state
-  const [error, setError] = useState<string | null>(null) // To manage any error
-
   // Display code line by line from array
   let codeLines = code.map((line, index) => {
     return (
@@ -37,14 +33,11 @@ const CodeView = ({
           onClick={() => {
             onUserClick(index)
           }}
-          disabled={loading}
         >
-          {/* {loading ? 'Explaining...' : ''} */}
           <img
             src='images/challenge.png'
             alt='explain icon'
             className='w-6 h-6'
-            //className="explain-icon"
           ></img>
         </button>
       </div>

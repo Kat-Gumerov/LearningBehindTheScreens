@@ -2,7 +2,7 @@
 import '../styles/dualscreen.css'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import CodeView from './CodeView'
+import CodeView from '../components/Navbar/CodeView'
 import GameView from './GameView'
 import { getExplanation } from '../../../utils/api'
 

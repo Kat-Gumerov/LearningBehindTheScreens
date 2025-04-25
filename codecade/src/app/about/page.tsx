@@ -43,7 +43,7 @@ const page = () => {
               you're starting, and we wanted to create something that makes it
               just a little less scary.
             </p>
-            <p className='team mt-4 text-left w-full [text-align:left]'>
+            <p className='team mt-4 text-left w-full'>
               From left to right: Simone, Camya, Katrina, Tyler, Fernando, &
               Reece
             </p>
