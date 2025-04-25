@@ -1,12 +1,13 @@
 'use client'
 import Link from 'next/link'
-import Navbar from './components/Navbar'
+// import Navbar from './components/Navbar'
+// import Navbar from './components/NavBar'
 import './styles/landing.css'
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className='flex-container justify-evenly mt-7 w-80 m-8 mb-8'>
         <div className='description mt-7 w-100 flex'>

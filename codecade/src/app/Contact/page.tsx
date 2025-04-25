@@ -2,7 +2,7 @@
 import React from 'react'
 import '../styles/contact.css'
 import emailjs from '@emailjs/browser'
-import Navbar from '../components/Navbar'
+// import Navbar from '../Navbar'
 
 const SERVICE_ID = 'service_647gs9b'
 const TEMPLATE_ID = 'template_9286of6'
@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className='flex h-screen'>
         {/* right half of page */}
         <div className='w-1/2 flex flex-col justify-start items-start h-screen px-32 py-72'>

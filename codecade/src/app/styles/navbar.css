@@ -1,0 +1,89 @@
+.Nav {
+  background: #fdc066;
+  font-size: 26px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem calc((100vw - 1000px) / 2);
+  z-index: 10;
+  font-family: Dogica;
+}
+
+.NavLink {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+
+  #logo-text {
+    color: white;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transition: all 0.2 ease-in-out;
+    color: #1d268c;
+    text-decoration: underline;
+  }
+
+  &.active {
+    color: #1d268c;
+  }
+}
+
+.Bars {
+  display: none;
+  color: #fdc066;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 75%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}
+
+.NavMenu {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.NavBtn {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.NavBtnLink {
+  border-radius: 4px;
+  background: #57bee7;
+  padding: 10px 22px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2 ease-in-out;
+  text-decoration: none;
+  margin-left: 24px;
+
+  &:hover {
+    transition: all 0.2 ease-in-out;
+    background: #fff;
+    color: #010606;
+  }
+}

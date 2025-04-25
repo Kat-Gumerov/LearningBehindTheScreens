@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 import '../styles/home.css'
-import Navbar from '../components/Navbar'
+// import Navbar from '../Navbar'
 import codey from '../../../public/images/codey-pic.png'
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* game menu */}
       <div className='text-center'>
         {/* <img src={codey.src} className='mr-5 codey'></img> */}

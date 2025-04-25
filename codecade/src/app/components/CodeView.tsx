@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../styles/dualscreen.css'
+import '../styles/dualscreen.css'
 
 interface CodeViewProps {
   currentLine: number | null

@@ -1,12 +1,12 @@
 import React from 'react'
 import '../styles/aboutus.css'
 import Link from 'next/link'
-import Navbar from '../components/Navbar'
+// import Navbar from '../Navbar'
 
 const page = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className='flex pt-2'>
         {/* Left Side - Team Info */}
         <div className='w-1/2 flex justify-center h-screen px-24 mt-1'>
