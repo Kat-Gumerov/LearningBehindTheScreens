@@ -3,10 +3,6 @@ import React, { MouseEvent } from 'react'
 import { useState } from 'react'
 import '../styles/dualscreen.css'
 
-import rockImg from '/images/rock.png'
-import paperImg from '/images/paper.png'
-import scissorImg from '/images/scissors.png'
-
 interface GameViewProps {
   onUserClick: (codeArray: number[]) => void
   buttonDisabled: boolean
@@ -20,12 +16,6 @@ const GameView = ({ onUserClick, buttonDisabled }: GameViewProps) => {
 
   const options = ['ROCK', 'PAPER', 'SCISSOR']
   type Option = (typeof options)[number] // "ROCK" | "PAPER" | "SCISSOR"
-
-  // const imageMap: Record<Option, string> = {
-  //   ROCK: '/images/rock.png',
-  //   PAPER: '/images/paper.png',
-  //   SCISSOR: '/images/scissors.png',
-  // }
 
   // arrays of code lines and their orders based on each outcome of the game
   const playerWinsRock = [0, 1, 2, 5, 6]
